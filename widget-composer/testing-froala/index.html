@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="froala_2.3.4/css/themes/gray.css">
+	<link rel="stylesheet" href="froala_2.3.4/css/froala_style.css">
+	<link rel="stylesheet" href="froala_2.3.4/css/froala_editor.css">
+</head>
+<body>
+<div id="froala">
+	
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="froala_2.3.4/js/froala_editor.js"></script>
+  <script type="text/javascript">
+  	$.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
+  	$(function() {
+        $('div#froala').froalaEditor({
+            toolbarInline: true,
+            charCounterCount: false,
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'emoticons', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo']
+        })
+    });
+  </script>
+</body>
+</html>
