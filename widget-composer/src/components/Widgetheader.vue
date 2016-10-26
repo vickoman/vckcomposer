@@ -3,7 +3,7 @@
         
         <h1 v-if="title">Your title is: {{ title }}</h1>
         <label>TITLE TEXT: </label><input v-model="title" placeholder="add a title">
-        
+        <br/>
         <h2 v-if="leadin">Your leadin is: {{ leadin }}</h2>
         <label>LEADIN TEXT: </label><input v-model="leadin" placeholder="add a leadin text">
         
@@ -27,18 +27,8 @@ export default {
 h1, h2 {
     font-weight: normal;
 }
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
+input{
+    height: 2em;
+    width: calc(100% - 20em);
 }
 </style>
