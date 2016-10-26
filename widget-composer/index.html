@@ -1,51 +1,35 @@
 <!DOCTYPE html>
 <html class="">
-  <head>
-    <title>Pattern Lab</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" />
-
-    <!-- https://github.com/jonathantneal/svg4everybody - ie-fix -->
-    <!-- Load External SVG Symbols -->
-    <script type="text/javascript">
-      var ajax = new XMLHttpRequest();
-      ajax.open("GET", "/static/images/md-icon-library/svg-symbols.svg", true);
-      ajax.send();
-      ajax.onload = function(e) {
+    <head>
+        <title>Pattern Lab</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" />
+        <!-- https://github.com/jonathantneal/svg4everybody - ie-fix -->
+        <!-- Load External SVG Symbols -->
+        <script type="text/javascript">
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", "/static/images/md-icon-library/svg-symbols.svg", true);
+        ajax.send();
+        ajax.onload = function(e) {
         var div = document.createElement("div");
         div.className = "visually-hidden";
         div.innerHTML = ajax.responseText;
         document.body.insertBefore(div, document.body.childNodes[0]);
-      }
+        }
+        </script>
+        <link rel="stylesheet" href="/static/css/main.css" media="all" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/style.css?1477072478821" media="all" />
+        <link rel="stylesheet" href="/static/css/pattern-scaffolding.css?1477072478821" media="all" />
 
-    </script>
+    </head>
+    <body class="">
 
-    <link rel="stylesheet" href="/static/css/main.css" media="all" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i" rel="stylesheet">
-
-    <link rel="stylesheet" href="/static/css/style.css?1477072478821" media="all" />
-    <link rel="stylesheet" href="/static/css/pattern-scaffolding.css?1477072478821" media="all" />
-
-    <!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
-    <!-- never cache patterns -->
-<meta http-equiv="cache-control" content="max-age=0" />
-<meta http-equiv="cache-control" content="no-cache" />
-<meta http-equiv="expires" content="0" />
-<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-<meta http-equiv="pragma" content="no-cache" />
-
-<link rel="stylesheet" href="../../styleguide/css/styleguide.min.css?1477072478821" media="all">
-<link rel="stylesheet" href="../../styleguide/css/prism-typeahead.min.css?1477072478821" media="all" />
-
-    <!-- End Pattern Lab -->
-
-  </head>
-  <body class="">
-
-<div class="widget-editor-container">
+<!-- Widget Editor -->
+<div class="widget-editor">
     <!--Header -->
     <header class="header">
-    <div class="header-title">Widget Editor</div>
+    <div class="header__title">Widget Editor</div>
     <svg>
         <use xlink:href="#close-x"></use>
     </svg>
@@ -58,7 +42,7 @@
              <div class="toolbar-widget">
     <ul>
         <li class="widget-title">
-             <label class="widget-title-label" for="">HOTSPOT WIDGET:</label>
+             <label class="widget-title__label" for="">HOTSPOT WIDGET:</label>
                 <div class="input-text">
     <label class="u-hidden" for="txt-input"></label>
     <input type="text" name="" class="txt-input" placeholder="Untitled" value=""/>
@@ -76,20 +60,22 @@
     <div class="mask-cmd-tools">
         <div class="cmd-tools">
             <ul>
-                <li class="btn-undo">
+                <li>
                     <svg><use xlink:href="#undo"></use></svg>
                 </li>
-                <li class="btn-redo">
+                <li>
                     <svg><use xlink:href="#redo"></use></svg>
                 </li>
-                <li class="spacer"></li>
-                <li class="btn-cut">
+                <li class="spacer">
+                    <svg><use xlink:href="#vert-line"></use></svg>
+                </li>
+                <li>
                     <svg><use xlink:href="#cut"></use></svg>
                 </li>
-                <li class="btn-copy">
+                <li>
                     <svg><use xlink:href="#copy"></use></svg>
                 </li>
-                <li class="btn-paste">
+                <li>
                     <svg><use xlink:href="#paste"></use></svg>
                 </li>
             </ul>
@@ -105,10 +91,12 @@ var menu_closed = true;
 
 cmd_menu.addEventListener('click', function(e){
     if(menu_closed) {
-        cmd_tools.classList.add('cmd-tools-open')
+        cmd_tools.classList.add('cmd-tools--open')
+        cmd_menu.classList.add('cmd-menu--active')
         menu_closed = false;
     } else {
-        cmd_tools.classList.remove('cmd-tools-open')
+        cmd_tools.classList.remove('cmd-tools--open')
+        cmd_menu.classList.remove('cmd-menu--active')
         menu_closed = true;
     }
 });
@@ -116,28 +104,64 @@ cmd_menu.addEventListener('click', function(e){
 
         </li>
         <li class="button-preview">
-                <button class="button-standard-gray">Button</button>
+            <button class="button-standard-gray">Preview</button>
 
         </li>
     </ul>
 </div>
+<script>
+    var title_input = document.querySelector('.toolbar-widget').querySelector('input');
+    title_input.addEventListener('focusin', function(e){
+        _placeholder = e.target.placeholder;
+        e.target.placeholder = '';
+    });
+     title_input.addEventListener('focusout', function(e) {
+        if(e.target.value || e.target.placeholder) {
+            e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+        }
+        if (e.target.value === '') {
+            e.target.placeholder = _placeholder;
+        }
+    })
+</script>
+
+            <div class="artboard-container">
+                <div class="media-tools">
+    <ul>
+        <li class="">
+            <svg>
+                <use xlink:href="#settings"></use>
+            </svg>
+        </li>
+         <li class="">
+            <svg>
+                <use xlink:href="#metadata"></use>
+            </svg>
+        </li>
+    </ul>
+</div>
+
+                <div class="artboard">
+                     
+
+                        <div id="app"></div>
 
 
-            <div class="artboard"></div>
+                </div>
+            </div>
         </div>
-        <!-- Right Panels -->
-        <div class="panel-container panel-right">
+        <!-- Panels -->
+        <div class="panel">
             <!-- Panel Settings Template-->
 <div class="panel-settings">
     <div class="panel-content">
-
         <div class="panel-header">Settings</div>
         <ul>
-            <li class="mb-24">
-                    <button class="button-standard-gray">Button</button>
+            <li class="kds-mb-24">
+                    <button class="button-standard-gray">Batch Upload</button>
 
             </li>
-             <li class="mb-32">
+             <li class="kds-mb-32">
                 <div class="checkbox">
     <!-- Checkbox Component -->
     <input type="checkbox" id="checkbox"/>
@@ -145,7 +169,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
             </li>
-            <li class="mb-32">
+            <li class="kds-mb-32">
                 <!-- Radio Button Vertical Component -->
 <div class="radio-buttons-vertical">
     <div class="radio-button-header">Header</div>
@@ -162,7 +186,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
             </li>
-            <li class="mb-32">
+            <li class="kds-mb-32">
                 <!-- Radio Button Response Component -->
 <div class="radio-buttons-response">
     <div class="radio-button-header">Response Type</div>
@@ -176,7 +200,14 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">Max attempts</label>
     <input type="number" min="1" max="9" value="3">
 </div>
-
+<script>
+     /* Limit character count to 1 */
+    document.querySelector('.input-number-max').querySelector('input').oninput = function () {
+        if (this.value.length > 1) {
+            return this.value = this.value.slice(0,1);
+        }
+    }
+</script>
 
                 </div>
             </div>
@@ -190,7 +221,14 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">Max attempts</label>
     <input type="number" min="1" max="9" value="3">
 </div>
-
+<script>
+     /* Limit character count to 1 */
+    document.querySelector('.input-number-max').querySelector('input').oninput = function () {
+        if (this.value.length > 1) {
+            return this.value = this.value.slice(0,1);
+        }
+    }
+</script>
 
                 </div>
             </div>
@@ -200,7 +238,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
             </li>
-            <li class="mb-16">
+            <li class="kds-mb-16">
                 <!-- Radio Button Vertical Component -->
 <div class="radio-buttons-vertical">
     <div class="radio-button-header">Header</div>
@@ -217,7 +255,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
             </li>
-            <li class="mb-32">
+            <li class="kds-mb-32">
                 <div class="checkbox">
     <!-- Checkbox Component -->
     <input type="checkbox" id="checkbox"/>
@@ -225,7 +263,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
             </li>
-            <li class="mb-32">
+            <li class="kds-mb-32">
                 <!-- Radio Button Vertical Component -->
 <div class="radio-buttons-vertical">
     <div class="radio-button-header">Header</div>
@@ -242,16 +280,23 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
             </li>
-            <li class="mb-32">
+            <li class="kds-mb-32">
                 <div class="input-number">
     <label for="">Width</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-
+<script>
+    /* Limit character count to 4 */
+    document.querySelector('.input-number').querySelector('input').oninput = function () {
+        if (this.value.length > 4) {
+            return this.value = this.value.slice(0,4);
+        }
+    }
+</script>
 
 
             </li>
-            <li class="mb-32">
+            <li class="kds-mb-32">
                 <div class="checkbox">
     <!-- Checkbox Component -->
     <input type="checkbox" id="checkbox"/>
@@ -263,6 +308,42 @@ cmd_menu.addEventListener('click', function(e){
     </div>
 </div>
 
+<script>
+    var parent = document.querySelector('.panel-settings');
+    var inputParents = document.querySelectorAll('.radio-buttons-vertical');
+    var inputResponse = document.querySelectorAll('.radio-buttons-response');
+    var inputRadio = parent.querySelectorAll('input[type="radio"]');
+    var inputCheck = parent.querySelectorAll('input[type="checkbox"]');
+
+    inputParents.forEach(function(parent) {
+        var id = Math.random().toString(36).slice(1,7)
+        var inputs = parent.querySelectorAll('input');
+        inputs.forEach(function(input) {
+            input.setAttribute('name', id);
+        })
+    });
+
+    inputResponse.forEach(function(parent) {
+        var id = Math.random().toString(36).slice(1,7)
+        var inputs = parent.querySelectorAll('input');
+        inputs.forEach(function(input) {
+            input.setAttribute('name', id);
+        })
+    });
+
+    inputCheck.forEach(function(checkbox) {
+        var id =  Math.floor(Math.random() * 999);
+        checkbox.setAttribute('id', id);
+        checkbox.nextElementSibling.setAttribute('for', id);
+    });
+
+    inputRadio.forEach(function(input) {
+        var id =  Math.floor(Math.random() * 999);
+        input.setAttribute('id', id);
+        input.nextElementSibling.setAttribute('for', id);
+    });
+
+</script>
 
             <div class="panel-themes">
     <!-- Panel Template -->
@@ -352,16 +433,16 @@ cmd_menu.addEventListener('click', function(e){
     <div class="panel-content">
         <div class="panel-header">Accessibility</div>
         <!-- alt text for screen readers -->
-        <div class="alt-text-readers-container">
-            <div class="btn-container border-top">
+        <div class="alt-text-readers-container accordian">
+            <div class="accordian__btn border-top">
                 <svg>
                     <use xlink:href="#arrow-right"></use>
                 </svg>
-                <div class="dd-btn">Alt Text Screen Readers</div>
+                <div class="accordian__title">Alt Text Screen Readers</div>
             </div>
-            <div class="dd-container panel-closed">
-                <ul class="dd-content">
-                    <li class="mb-32">
+            <div class="accordian__container panel-closed">
+                <ul class="accordian__content">
+                    <li class="kds-mb-32">
                         <!-- Widget Short Description -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Widget Short Description</label>
@@ -382,16 +463,16 @@ cmd_menu.addEventListener('click', function(e){
             </div>
         </div>
         <!-- alt text for assets -->
-        <div class="alt-text-assets-container">
-             <div class="btn-container">
+        <div class="alt-text-assets-container accordian">
+             <div class="accordian__btn">
                 <svg>
                     <use xlink:href="#arrow-right"></use>
                 </svg>
-                <div class="dd-btn">Alt Text Assets</div>
+                <div class="accordian__title">Alt Text Assets</div>
             </div>
-            <div class="dd-container panel-closed">
-                <ul class="dd-content">
-                    <li class="mb-40">
+            <div class="accordian__container panel-closed">
+                <ul class="accordian__content">
+                    <li class="kds-mb-40">
                        <div class="image-text-input">
     <div class="image-lockup">
         <div class="image-file-name">filename.jpg</div>
@@ -406,7 +487,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
                     </li>
-                    <li class="mb-40">
+                    <li class="kds-mb-40">
                        <div class="image-text-input">
     <div class="image-lockup">
         <div class="image-file-name">filename.jpg</div>
@@ -421,7 +502,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
                     </li>
-                    <li class="mb-32">
+                    <li class="kds-mb-32">
                        <div class="image-text-input">
     <div class="image-lockup">
         <div class="image-file-name">filename.jpg</div>
@@ -441,7 +522,77 @@ cmd_menu.addEventListener('click', function(e){
         </div>
     </div>
 </div>
+<script>
+    (function(){
 
+        var accordians = document.querySelectorAll('.accordian');
+        accordians.forEach(function(acord) {
+            acord.querySelector('.accordian__btn').addEventListener('click', function(e){
+                _openPanel(e.currentTarget);
+                toggleSvg(this.querySelector('svg'));
+                acord.classList.toggle('white-bkgd');
+            });
+        });
+
+        function _openPanel(target) {
+            if(target.querySelector('.accordian__container').classList.contains('panel-closed')){
+                console.log('target ', target.querySelector('.accordian__container'))
+                target.querySelector('.accordian__container').classList.remove('panel-closed');
+            } else {
+                target.querySelector('.accordian__container').classList.add('panel-closed');
+            }
+        }
+
+
+         function toggleSvg(svg) {
+            svg.classList.contains('u-rotate-90') ? svg.classList.remove('u-rotate-90') : svg.classList.add('u-rotate-90')
+        }
+
+
+        /* Add Label to text input - Temp Hack */
+        // var altText = alt_asset.querySelectorAll('.dd-content input');
+        // altText.forEach(function(item){ item.placeholder = 'Alt Text' });
+
+        var inputs = document.querySelectorAll('.panel-accessibility input');
+        inputs.forEach(function(input) {
+            var _placeholder;
+            input.addEventListener('focusin', function(e){
+                _placeholder = e.target.placeholder;
+                e.target.placeholder = ' ';
+                e.target.previousSibling.previousSibling.classList.remove('u-hidden')
+            });
+            input.addEventListener('focusout', function(e) {
+
+                if(e.target.value || e.target.placeholder) {
+                    e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+                }
+                if (e.target.value === '') {
+                    e.target.previousSibling.previousSibling.classList.add('u-hidden');
+                    e.target.placeholder = _placeholder;
+                }
+            })
+        });
+
+        var textarea_input = document.querySelector('.panel-accessibility textarea');
+        var _placeholder_textarea;
+        textarea_input.addEventListener('focusin', function(e){
+            _placeholder_textarea = e.target.placeholder;
+            e.target.placeholder = ' ';
+            e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+            this.parentNode.style.height = (100 + '%');
+        });
+
+        textarea_input.addEventListener('focusout', function(e) {
+            if(e.target.value || e.target.placeholder) {
+                e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+            }
+            if (e.target.value === '') {
+                e.target.previousSibling.previousSibling.classList.add('u-hidden');
+                e.target.placeholder = _placeholder_textarea;
+            }
+        })
+    })();
+</script>
 
 
 
@@ -453,16 +604,16 @@ cmd_menu.addEventListener('click', function(e){
     <!-- Panel Template -->
     <div class="panel-content">
         <div class="panel-header">Metadata</div>
-        <div class="description-container">
-            <div class="btn-container border-top">
+        <div class="description-container accordian">
+            <div class="border-top accordian__btn">
                 <svg>
                     <use xlink:href="#arrow-right"></use>
                 </svg>
-                <div class="dd-btn">Description</div>
+                <div class="accordian__title">Description</div>
             </div>
-            <div class="dd-container panel-closed">
-                <ul class="dd-content">
-                    <li class="mb-16">
+            <div class="accordian__container panel-closed">
+                <ul class="accordian__content">
+                    <li class="kds-mb-16">
                         <!-- Subject -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Subject</label>
@@ -471,7 +622,7 @@ cmd_menu.addEventListener('click', function(e){
 
 
                     </li>
-                    <li class="mb-16">
+                    <li class="kds-mb-16">
                         <!-- Description -->
                             <div class="textarea-line-container">
     <label class="u-hidden" for="txtarea-line">Description</label>
@@ -479,7 +630,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
                     </li>
-                    <li class="mb-16">
+                    <li class="kds-mb-16">
                         <!-- Publisher -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Publisher</label>
@@ -500,16 +651,16 @@ cmd_menu.addEventListener('click', function(e){
                 </ul>
             </div>
         </div>
-        <div class="rights-sources-container">
-            <div class="btn-container">
+        <div class="rights-sources-container accordian">
+            <div class="btn-container accordian__btn">
                 <svg>
                     <use xlink:href="#arrow-right"></use>
                 </svg>
-                <div class="dd-btn">Rights & Sources</div>
+                <div class="accordian__title">Rights & Sources</div>
             </div>
-            <div class="dd-container panel-closed">
-                <ul class="dd-content">
-                    <li class="mb-16">
+            <div class="accordian__container panel-closed">
+                <ul class="accordian__content">
+                    <li class="kds-mb-16">
                         <!-- Identifier -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Identifier</label>
@@ -518,7 +669,7 @@ cmd_menu.addEventListener('click', function(e){
 
 
                      </li>
-                     <li class="mb-16">
+                     <li class="kds-mb-16">
                         <!-- Sources -->
                             <div class="textarea-line-container">
     <label class="u-hidden" for="txtarea-line">Source</label>
@@ -527,7 +678,7 @@ cmd_menu.addEventListener('click', function(e){
 
                      </li>
                         <!-- Language Dropdown -->
-                     <li class="mb-16">
+                     <li class="kds-mb-16">
                         <div class="dropdown dropdown-input">
     <div class="dropdown-button">
         <div class="input-text">
@@ -553,7 +704,7 @@ cmd_menu.addEventListener('click', function(e){
 
                     </li>
 
-                    <li class="mb-16">
+                    <li class="kds-mb-16">
                         <!-- Coverage -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Coverage</label>
@@ -574,16 +725,16 @@ cmd_menu.addEventListener('click', function(e){
                 </ul>
             </div>
         </div>
-        <div class="interactive-profile-container">
-            <div class="btn-container">
+        <div class="interactive-profile-container accordian">
+            <div class="btn-container accordian__btn">
                  <svg>
                     <use xlink:href="#arrow-right"></use>
                 </svg>
-                <div class="dd-btn">Interactive Profile</div>
+                <div class="accordian__title">Interactive Profile</div>
             </div>
-            <div class="dd-container panel-closed">
-                <ul class="dd-content">
-                    <li class="mb-16">
+            <div class="accordian__container panel-closed">
+                <ul class="accordian__content">
+                    <li class="kds-mb-16">
                         <!-- Genre -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Genre</label>
@@ -593,7 +744,7 @@ cmd_menu.addEventListener('click', function(e){
 
                     </li>
                     </li>
-                    <li class="mb-16">
+                    <li class="kds-mb-16">
                         <!-- Alignment -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Alignment</label>
@@ -621,7 +772,14 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">minutes:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-
+<script>
+    /* Limit character count to 4 */
+    document.querySelector('.input-number').querySelector('input').oninput = function () {
+        if (this.value.length > 4) {
+            return this.value = this.value.slice(0,4);
+        }
+    }
+</script>
 
 
     </li>
@@ -630,6 +788,14 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">seconds:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
+<script>
+    /* Limit character count to 4 */
+    document.querySelector('.input-number').querySelector('input').oninput = function () {
+        if (this.value.length > 4) {
+            return this.value = this.value.slice(0,4);
+        }
+    }
+</script>
 
 
     </li>
@@ -637,7 +803,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
                     </li>
-                    <li class="mb-16">
+                    <li class="kds-mb-16">
                         <!-- Age -->
                          <div class="input-age-range">
     <label for="">Age Range</label>
@@ -647,7 +813,14 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">From:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-
+<script>
+    /* Limit character count to 4 */
+    document.querySelector('.input-number').querySelector('input').oninput = function () {
+        if (this.value.length > 4) {
+            return this.value = this.value.slice(0,4);
+        }
+    }
+</script>
 
 
         </li>
@@ -656,7 +829,14 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">To:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-
+<script>
+    /* Limit character count to 4 */
+    document.querySelector('.input-number').querySelector('input').oninput = function () {
+        if (this.value.length > 4) {
+            return this.value = this.value.slice(0,4);
+        }
+    }
+</script>
 
 
         </li>
@@ -664,7 +844,7 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
                     </li>
-                    <li class="mb-16">
+                    <li class="kds-mb-16">
                         <!-- Interactive Type -->
                             <div class="input-text">
     <label class="u-hidden" for="txt-input">Interactive Type</label>
@@ -687,12 +867,110 @@ cmd_menu.addEventListener('click', function(e){
         </div>
     </div>
 </div>
+<script>
+   (function() {
 
+        var accordians = document.querySelectorAll('.accordian');
+        accordians.forEach(function(acord) {
+            acord.querySelector('.accordian__btn').addEventListener('click', function(e){
+                openPanel(acord);
+                toggleSvg(this.querySelector('svg'));
+                acord.classList.toggle('white-bkgd');
+            });
+        });
+
+        function openPanel(target) {
+            if(target.querySelector('.accordian__container').classList.contains('panel-closed')){
+                target.querySelector('.accordian__container').classList.remove('panel-closed');
+            } else {
+                target.querySelector('.accordian__container').classList.add('panel-closed');
+            }
+        }
+
+        function toggleSvg(svg) {
+            svg.classList.contains('u-rotate-90') ? svg.classList.remove('u-rotate-90') : svg.classList.add('u-rotate-90')
+        }
+
+        // var dropdown_arrow = rights_sources.querySelector('.dropdown-input .icon-arrow');
+        // dropdown_arrow.addEventListener('click', function(e) {
+        //     e.stopPropagation();
+        //     var parent = dropdown_arrow.parentNode.parentNode.parentNode.querySelector('.dropdown-input');
+        //     var target = parent.querySelector('.dropdown-content');
+        //     target.classList.toggle('u-hide');
+        //     var mask = rights_sources.querySelector('.dd-container');
+        //     mask.classList.toggle('remove-mask');
+        //     var label = parent.querySelector('label');
+        //     label.classList.toggle('u-hidden');
+        // });
+
+        // var dropdown_input = rights_sources.querySelector('.dropdown-input input');
+        // dropdown_input.addEventListener('focusin', function(e){
+        //     _placeholder = e.target.placeholder;
+        //     e.target.placeholder = ' ';
+        //     e.target.previousSibling.previousSibling.classList.remove('u-hidden')
+        // });
+        // dropdown_input.addEventListener('focusout', function(e) {
+        //     if(e.target.value || e.target.placeholder) {
+        //         e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+        //     }
+        //     if (e.target.value === '') {
+        //         e.target.previousSibling.previousSibling.classList.add('u-hidden');
+        //         e.target.placeholder = _placeholder;
+        //     }
+        // });
+
+        var inputs = document.querySelectorAll('.panel-metadata .txt-input');
+        inputs.forEach(function(input) {
+            var _placeholder;
+            input.addEventListener('focusin', function(e){
+                _placeholder = e.target.placeholder;
+                e.target.placeholder = ' ';
+                e.target.previousSibling.previousSibling.classList.remove('u-hidden')
+            });
+            input.addEventListener('focusout', function(e) {
+                if(e.target.value || e.target.placeholder) {
+                    e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+                }
+                if (e.target.value === '') {
+                    e.target.previousSibling.previousSibling.classList.add('u-hidden');
+                    e.target.placeholder = _placeholder;
+                }
+            })
+        });
+
+
+        var parent = document.querySelector('.panel-metadata');
+        var textarea_input = parent.querySelectorAll('textarea');
+        var _placeholder_textarea;
+
+        textarea_input.forEach(function(ta){
+            ta.addEventListener('focusin', function(e){
+                _placeholder_textarea = e.target.placeholder;
+                e.target.placeholder = ' ';
+                var textarea_label = this.parentNode.querySelector('label');
+                textarea_label.classList.remove('u-hidden');
+                this.parentNode.style.height = (100 + '%');
+             });
+
+             ta.addEventListener('focusout', function(e) {
+                var textarea_label = this.parentNode.querySelector('label');
+                textarea_label.classList.remove('u-hidden');
+                if(e.target.value) {
+                    textarea_label.classList.remove('u-hidden');
+                }
+                else if (e.target.value === '') {
+                   textarea_label.classList.add('u-hidden');
+                    e.target.placeholder = "Source";
+                }
+            })
+        });
+    })();
+</script>
 
 
         </div>
-        <!-- Right Sidebar -->
-        <div class="sidebar sidebar-right">
+        <!-- Sidebar -->
+        <div class="sidebar">
     <ul>
         <li class="btn-settings">
             <svg>
@@ -730,6 +1008,78 @@ cmd_menu.addEventListener('click', function(e){
 </div>
 
     </div>
+    <!-- Footer -->
+    <footer class="footer">Footer - FPO</footer>
+
 </div>
-  </body>
+
+
+
+
+<script src="/static/js/widget-editor.js"></script>
+
+
+
+  <!--DO NOT REMOVE-->
+  <script type="text/json" id="sg-pattern-data-footer" class="sg-pattern-data">
+  {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"templates-header","lineagePath":"../../patterns/05-templates-header/05-templates-header.rendered.html"},{"lineagePattern":"modules-toolbar","lineagePath":"../../patterns/04-modules-toolbar/04-modules-toolbar.rendered.html"},{"lineagePattern":"modules-media-tools","lineagePath":"../../patterns/04-modules-media-tools/04-modules-media-tools.rendered.html"},{"lineagePattern":"modules-gallery","lineagePath":"../../patterns/04-modules-gallery/04-modules-gallery.rendered.html"},{"lineagePattern":"modules-panel-settings","lineagePath":"../../patterns/04-modules-panel-settings/04-modules-panel-settings.rendered.html"},{"lineagePattern":"modules-panel-themes","lineagePath":"../../patterns/04-modules-panel-themes/04-modules-panel-themes.rendered.html"},{"lineagePattern":"modules-panel-accessibility","lineagePath":"../../patterns/04-modules-panel-accessibility/04-modules-panel-accessibility.rendered.html"},{"lineagePattern":"modules-panel-metadata","lineagePath":"../../patterns/04-modules-panel-metadata/04-modules-panel-metadata.rendered.html"},{"lineagePattern":"templates-sidebar","lineagePath":"../../patterns/05-templates-sidebar/05-templates-sidebar.rendered.html"},{"lineagePattern":"templates-footer","lineagePath":"../../patterns/05-templates-footer/05-templates-footer.rendered.html"}],"lineage":[{"lineagePattern":"templates-header","lineagePath":"../../patterns/05-templates-header/05-templates-header.rendered.html"},{"lineagePattern":"modules-toolbar","lineagePath":"../../patterns/04-modules-toolbar/04-modules-toolbar.rendered.html"},{"lineagePattern":"modules-media-tools","lineagePath":"../../patterns/04-modules-media-tools/04-modules-media-tools.rendered.html"},{"lineagePattern":"modules-gallery","lineagePath":"../../patterns/04-modules-gallery/04-modules-gallery.rendered.html"},{"lineagePattern":"modules-panel-settings","lineagePath":"../../patterns/04-modules-panel-settings/04-modules-panel-settings.rendered.html"},{"lineagePattern":"modules-panel-themes","lineagePath":"../../patterns/04-modules-panel-themes/04-modules-panel-themes.rendered.html"},{"lineagePattern":"modules-panel-accessibility","lineagePath":"../../patterns/04-modules-panel-accessibility/04-modules-panel-accessibility.rendered.html"},{"lineagePattern":"modules-panel-metadata","lineagePath":"../../patterns/04-modules-panel-metadata/04-modules-panel-metadata.rendered.html"},{"lineagePattern":"templates-sidebar","lineagePath":"../../patterns/05-templates-sidebar/05-templates-sidebar.rendered.html"},{"lineagePattern":"templates-footer","lineagePath":"../../patterns/05-templates-footer/05-templates-footer.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"pages"},"patternExtension":"mustache","patternName":"Widget Editor","patternPartial":"pages-widget-editor","patternState":"","patternEngineName":"mustache","extraOutput":{}}
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+  
+  var scriptLoader = {
+    
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+    
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1477497675966">
+  (function() {
+    if (self != top) {
+      var cb = '1477497675966';
+      var js = [];
+      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
+        js.push('styleguide/bower_components/classList.min.js');
+      }
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+<script id="pl-js-insert-1477497675966">
+  (function() {
+    if (self != top) {
+      var cb = '1477497675966';
+      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
+      scriptLoader.run(js,cb,'pl-js-insert');
+    }
+  })();
+</script>
+
+</body>
 </html>

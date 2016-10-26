@@ -3,21 +3,14 @@
  * https://github.com/jackmoore/autosize
  */
 var ta = document.querySelectorAll('textarea')
-autosize(ta);
-ta.forEach(function(t){
-	t.addEventListener('focus', function(e){
-  		autosize(t);
-	});
-});
-
 
 /**
  * Right Sidebar
  */
-var right_panel = document.querySelector('.panel-right'),
- 	right_sidebar = document.querySelectorAll('.sidebar-right li'),
-    right_indicators = document.querySelectorAll('.sidebar-right .indicator'),
-    right_icons =  document.querySelectorAll('.sidebar-right svg'),
+var right_panel = document.querySelector('.panel'),
+ 	right_sidebar = document.querySelectorAll('.sidebar li'),
+    right_indicators = document.querySelectorAll('.sidebar .indicator'),
+    right_icons =  document.querySelectorAll('.sidebar svg'),
     right_sidebar_open = false;
 
     /* PANELS */
@@ -80,24 +73,21 @@ function showPanelContentRight(item) {
 
 /* PANEL ACTIONS */
 function openPanel(item, panel, _width) {
-	if(panel.classList.contains('panel-right')){
-		panel.classList.add('u-panel-open-right')
+	if(panel.classList.contains('panel')){
+		panel.classList.add('u-panel-open-right');
+
 	}
-	if(panel.classList.contains('panel-left')){
-		panel.classList.add('u-panel-open-left')
-	}
-	//panel.classList.add('u-panel-open')
+
 	item.querySelector('svg').classList.add('u-selected');
 	item.querySelector('.indicator').classList.remove('u-hide');
 }
 
 function closePanel(item, panel) {
-	if(panel.classList.contains('panel-right')){
+	if(panel.classList.contains('panel')){
 		panel.classList.remove('u-panel-open-right')
+
 	}
-	if(panel.classList.contains('panel-left')){
-		panel.classList.remove('u-panel-open-left')
-	}
+
 	item.classList.add('u-selected');
 	item.querySelector('.indicator').classList.add('u-hide');
 }
@@ -110,5 +100,4 @@ function resetSelectionState(indicators, icons) {
 		item.classList.remove('u-selected');
 	});
 }
-
 
