@@ -1,0 +1,112 @@
+{
+	"settings": [
+
+		{
+			"title"      : "Header Title", // Header title
+			"components" : [
+
+				// Radio buttons
+				{
+					"id"     : "radio-id",
+					"type"   : "radio",
+					"values" : [
+						{
+							"value" : "on",
+							"label" : "On"
+						},
+						{
+							"value" : "off",
+							"label" : "Off"
+						}
+					],
+					"defaultValue" : "on"
+				},
+
+				// Radio buttons with inline dropdown combo
+				{
+					"id"     : "radio-inline-id",
+					"type"   : "radio",
+					"values" : [
+						{
+							"value"  : "immediate",
+							"label"  : "Immediate",
+							"inline" : "Object for another component"
+						},
+						{
+							"value" : "delayed",
+							"label" : "Delayed"
+						}
+					],
+					"defaultValue" : "immediate"
+				},
+
+				// Dropdown
+				{
+					"id"     : "dropdown-id",
+					"type"   : "dropdown",
+					"label"  : "Max attempts",
+					"values" : [
+						{
+							"value" : "1",
+							"label" : "1"
+						},
+						{
+							"value" : "2",
+							"label" : "2"
+						},
+						{
+							"value" : "3",
+							"label" : "3"
+						}
+					],
+					"defaultValue" : "3"
+				},
+
+				// Checkbox
+				{
+					"id"           : "checkbox-id",
+					"type"         : "checkbox",
+					"label"        : "Include \"Show Answer\" button",
+					"defaultValue" : "true"
+				},
+
+				// Input text
+				{
+					"id"     	   : "input-text-id",
+					"type"   	   : "input",
+					"label"  	   : "Completion Message",
+					"placeholder"  : "Your message",
+					"maxLength"	   : "100",
+					"defaultValue" : "Good job!"
+				},
+
+				// Input number
+				{
+					"id"     	   : "input-number-id",
+					"type"   	   : "input-number",
+					"label"  	   : "Width",
+					"placeholder"  : "Your message",
+					"maxValue"	   : "768",
+					"minValue"     : "100",
+					"defaultValue" : "500"
+				},
+
+				// Background image
+				{
+					"id"     : "bg-image-id",
+					"type"   : "bg-image",
+					"action" : "modal-upload-image",
+					"path"   : ""
+				},
+
+				// Button
+				{
+					"id"     : "button-id",
+					"type"   : "button",
+					"label"  : "Batch Upload",
+					"action" : "modal-upload-batch"
+				}
+			]
+		}
+	]
+}
