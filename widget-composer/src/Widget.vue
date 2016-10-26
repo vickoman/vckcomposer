@@ -1,18 +1,19 @@
 <template>
   <div id="widget">
-    <h1>WIDGET</h1>
-    <img src="./assets/logo.png">
-    <scaffold></scaffold>
+    <widgetheader></widgetheader>
+    <widgetfooter></widgetfooter>
   </div>
 </template>
 
 <script>
-import Scaffold from './components/Scaffold'
+import Widgetheader from './components/Widgetheader'
+import Widgetfooter from './components/Widgetfooter'
 
 export default {
   name: 'widget',
   components: {
-    Scaffold
+    Widgetheader,
+    Widgetfooter
   }
 }
 </script>
