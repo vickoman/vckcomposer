@@ -1,0 +1,14 @@
+{
+  "name": "testing-froala",
+  "version": "1.0.0",
+  "description": "froala",
+  "main": "''",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "dt",
+  "license": "ISC",
+  "dependencies": {
+    "vue-froala": "^1.0.1"
+  }
+}
