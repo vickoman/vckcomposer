@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <router-link to="/widgetEditor">Widget Editor</router-link>
+    <router-link to="/next">Next</router-link>
+    <router-view class="view"></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+
 
 export default {
-  name: 'app',
-  components: {
-    Hello
-  }
+  name: 'app'
 }
+
+
+
+
 </script>
 
 <style>
