@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html class="">
     <head>
-        <title>Pattern Lab</title>
+        <title>Widget Composer</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width" />
-        <!-- https://github.com/jonathantneal/svg4everybody - ie-fix -->
         <!-- Load External SVG Symbols -->
         <script type="text/javascript">
         var ajax = new XMLHttpRequest();
@@ -18,7 +17,7 @@
         }
         </script>
         <link rel="stylesheet" href="/static/css/main.css" media="all" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i" rel="stylesheet"> -->
         <link rel="stylesheet" href="/static/css/style.css?1477072478821" media="all" />
         <link rel="stylesheet" href="/static/css/pattern-scaffolding.css?1477072478821" media="all" />
     </head>
@@ -139,177 +138,9 @@ e.target.placeholder = _placeholder;
 <div class="panel">
 <!-- Panel Settings Template-->
 <div class="panel-settings">
-<div class="panel-content">
-    <div class="panel-header">Settings</div>
-    <ul>
-        <li class="kds-mb-24">
-            <button class="button-standard-gray">Batch Upload</button>
-        </li>
-        <li class="kds-mb-32">
-            <div class="checkbox">
-                <!-- Checkbox Component -->
-                <input type="checkbox" id="checkbox"/>
-                <label for="checkbox">Checkbox</label>
-            </div>
-        </li>
-        <li class="kds-mb-32">
-            <!-- Radio Button Vertical Component -->
-            <div class="radio-buttons-vertical">
-                <div class="radio-button-header">Header</div>
-                <ul>
-                    <li>
-                        <input type="radio" value="On" checked>
-                        <label>On</label>
-                    </li>
-                    <li>
-                        <input type="radio" value="Off">
-                        <label>Off</label>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="kds-mb-32">
-            <!-- Radio Button Response Component -->
-            <div class="radio-buttons-response">
-                <div class="radio-button-header">Response Type</div>
-                <ul>
-                    <li>
-                        <div class="radio-container">
-                            <input type="radio" value="On" checked>
-                            <label>On</label>
-                            <div class="input-number-container u-hidden">
-                                <div class="input-number-max">
-                                    <label for="">Max attempts</label>
-                                    <input type="number" min="1" max="9" value="3">
-                                </div>
-                                <script>
-                                /* Limit character count to 1 */
-                                document.querySelector('.input-number-max').querySelector('input').oninput = function () {
-                                if (this.value.length > 1) {
-                                return this.value = this.value.slice(0,1);
-                                }
-                                }
-                                </script>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="radio-container">
-                            <input type="radio" value="Off">
-                            <label>Off</label>
-                            <div class="input-number-container u-hidden">
-                                <div class="input-number-max">
-                                    <label for="">Max attempts</label>
-                                    <input type="number" min="1" max="9" value="3">
-                                </div>
-                                <script>
-                                /* Limit character count to 1 */
-                                document.querySelector('.input-number-max').querySelector('input').oninput = function () {
-                                if (this.value.length > 1) {
-                                return this.value = this.value.slice(0,1);
-                                }
-                                }
-                                </script>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="kds-mb-16">
-            <!-- Radio Button Vertical Component -->
-            <div class="radio-buttons-vertical">
-                <div class="radio-button-header">Header</div>
-                <ul>
-                    <li>
-                        <input type="radio" value="On" checked>
-                        <label>On</label>
-                    </li>
-                    <li>
-                        <input type="radio" value="Off">
-                        <label>Off</label>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="kds-mb-32">
-            <div class="checkbox">
-                <!-- Checkbox Component -->
-                <input type="checkbox" id="checkbox"/>
-                <label for="checkbox">Checkbox</label>
-            </div>
-        </li>
-        <li class="kds-mb-32">
-            <!-- Radio Button Vertical Component -->
-            <div class="radio-buttons-vertical">
-                <div class="radio-button-header">Header</div>
-                <ul>
-                    <li>
-                        <input type="radio" value="On" checked>
-                        <label>On</label>
-                    </li>
-                    <li>
-                        <input type="radio" value="Off">
-                        <label>Off</label>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="kds-mb-32">
-            <div class="input-number">
-                <label for="">Width</label>
-                <input type="number" min="-9999" max="9999" maxlength="4" value="249">
-            </div>
-            <script>
-            /* Limit character count to 4 */
-            document.querySelector('.input-number').querySelector('input').oninput = function () {
-            if (this.value.length > 4) {
-            return this.value = this.value.slice(0,4);
-            }
-            }
-            </script>
-        </li>
-        <li class="kds-mb-32">
-            <div class="checkbox">
-                <!-- Checkbox Component -->
-                <input type="checkbox" id="checkbox"/>
-                <label for="checkbox">Checkbox</label>
-            </div>
-        </li>
-    </ul>
+    <div id="panel-settings"><!-- Panelsettings.vue is instantiated here --></div>        
 </div>
-</div>
-<script>
-var parent = document.querySelector('.panel-settings');
-var inputParents = document.querySelectorAll('.radio-buttons-vertical');
-var inputResponse = document.querySelectorAll('.radio-buttons-response');
-var inputRadio = parent.querySelectorAll('input[type="radio"]');
-var inputCheck = parent.querySelectorAll('input[type="checkbox"]');
-inputParents.forEach(function(parent) {
-var id = Math.random().toString(36).slice(1,7)
-var inputs = parent.querySelectorAll('input');
-inputs.forEach(function(input) {
-input.setAttribute('name', id);
-})
-});
-inputResponse.forEach(function(parent) {
-var id = Math.random().toString(36).slice(1,7)
-var inputs = parent.querySelectorAll('input');
-inputs.forEach(function(input) {
-input.setAttribute('name', id);
-})
-});
-inputCheck.forEach(function(checkbox) {
-var id =  Math.floor(Math.random() * 999);
-checkbox.setAttribute('id', id);
-checkbox.nextElementSibling.setAttribute('for', id);
-});
-inputRadio.forEach(function(input) {
-var id =  Math.floor(Math.random() * 999);
-input.setAttribute('id', id);
-input.nextElementSibling.setAttribute('for', id);
-});
-</script>
+
 <div class="panel-themes">
 <!-- Panel Template -->
 <div class="panel-content">
@@ -890,9 +721,7 @@ e.target.placeholder = "Source";
 * Licensed under the MIT license
 *
 */
-
 var scriptLoader = {
-
 run: function(js,cb,target) {
 var s  = document.getElementById(target+'-'+cb);
 for (var i = 0; i < js.length; i++) {
@@ -911,7 +740,6 @@ scriptLoader.run(dep,cb,target);
 s.parentNode.insertBefore(c,s);
 }
 }
-
 }
 </script>
 <script id="pl-js-polyfill-insert-1477497675966">
