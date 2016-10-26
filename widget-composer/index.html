@@ -121,21 +121,7 @@ cmd_menu.addEventListener('click', function(e){
         </li>
     </ul>
 </div>
-<script>
-    var title_input = document.querySelector('.toolbar-widget').querySelector('input');
-    title_input.addEventListener('focusin', function(e){
-        _placeholder = e.target.placeholder;
-        e.target.placeholder = '';
-    });
-     title_input.addEventListener('focusout', function(e) {
-        if(e.target.value || e.target.placeholder) {
-            e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-        }
-        if (e.target.value === '') {
-            e.target.placeholder = _placeholder;
-        }
-    })
-</script>
+
 
             <div class="artboard"></div>
         </div>
@@ -190,14 +176,7 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">Max attempts</label>
     <input type="number" min="1" max="9" value="3">
 </div>
-<script>
-     /* Limit character count to 1 */
-    document.querySelector('.input-number-max').querySelector('input').oninput = function () {
-        if (this.value.length > 1) {
-            return this.value = this.value.slice(0,1);
-        }
-    }
-</script>
+
 
                 </div>
             </div>
@@ -211,14 +190,7 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">Max attempts</label>
     <input type="number" min="1" max="9" value="3">
 </div>
-<script>
-     /* Limit character count to 1 */
-    document.querySelector('.input-number-max').querySelector('input').oninput = function () {
-        if (this.value.length > 1) {
-            return this.value = this.value.slice(0,1);
-        }
-    }
-</script>
+
 
                 </div>
             </div>
@@ -275,14 +247,7 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">Width</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-<script>
-    /* Limit character count to 4 */
-    document.querySelector('.input-number').querySelector('input').oninput = function () {
-        if (this.value.length > 4) {
-            return this.value = this.value.slice(0,4);
-        }
-    }
-</script>
+
 
 
             </li>
@@ -298,42 +263,6 @@ cmd_menu.addEventListener('click', function(e){
     </div>
 </div>
 
-<script>
-    var parent = document.querySelector('.panel-settings');
-    var inputParents = document.querySelectorAll('.radio-buttons-vertical');
-    var inputResponse = document.querySelectorAll('.radio-buttons-response');
-    var inputRadio = parent.querySelectorAll('input[type="radio"]');
-    var inputCheck = parent.querySelectorAll('input[type="checkbox"]');
-
-    inputParents.forEach(function(parent) {
-        var id = Math.random().toString(36).slice(1,7)
-        var inputs = parent.querySelectorAll('input');
-        inputs.forEach(function(input) {
-            input.setAttribute('name', id);
-        })
-    });
-
-    inputResponse.forEach(function(parent) {
-        var id = Math.random().toString(36).slice(1,7)
-        var inputs = parent.querySelectorAll('input');
-        inputs.forEach(function(input) {
-            input.setAttribute('name', id);
-        })
-    });
-
-    inputCheck.forEach(function(checkbox) {
-        var id =  Math.floor(Math.random() * 999);
-        checkbox.setAttribute('id', id);
-        checkbox.nextElementSibling.setAttribute('for', id);
-    });
-
-    inputRadio.forEach(function(input) {
-        var id =  Math.floor(Math.random() * 999);
-        input.setAttribute('id', id);
-        input.nextElementSibling.setAttribute('for', id);
-    });
-
-</script>
 
             <div class="panel-themes">
     <!-- Panel Template -->
@@ -512,79 +441,7 @@ cmd_menu.addEventListener('click', function(e){
         </div>
     </div>
 </div>
-<script>
-    (function(){
 
-        var alt_text = document.querySelector('.alt-text-readers-container');
-        alt_text.querySelector('.btn-container').addEventListener('click', function(e){
-            checkHeight(alt_text);
-            toggleSvg(this.querySelector('svg'));
-            this.classList.toggle('white-bkgd');
-        });
-
-        var alt_asset = document.querySelector('.alt-text-assets-container');
-        alt_asset.querySelector('.btn-container').addEventListener('click', function(e){
-            checkHeight(alt_asset);
-            toggleSvg(this.querySelector('svg'));
-            this.classList.toggle('white-bkgd');
-        });
-
-         function toggleSvg(svg) {
-            svg.classList.contains('u-rotate-90') ? svg.classList.remove('u-rotate-90') : svg.classList.add('u-rotate-90')
-        }
-
-        function checkHeight(target) {
-            if(target.querySelector('.dd-container').classList.contains('panel-closed')){
-                target.querySelector('.dd-container').classList.remove('panel-closed');
-            } else {
-                target.querySelector('.dd-container').classList.add('panel-closed');
-            }
-        }
-
-        /* Add Label to text input - Temp Hack */
-        var altText = alt_asset.querySelectorAll('.dd-content input');
-        altText.forEach(function(item){ item.placeholder = 'Alt Text' });
-
-        var inputs = document.querySelectorAll('.panel-accessibility input');
-        inputs.forEach(function(input) {
-            var _placeholder;
-            input.addEventListener('focusin', function(e){
-                _placeholder = e.target.placeholder;
-                e.target.placeholder = ' ';
-                e.target.previousSibling.previousSibling.classList.remove('u-hidden')
-            });
-            input.addEventListener('focusout', function(e) {
-
-                if(e.target.value || e.target.placeholder) {
-                    e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-                }
-                if (e.target.value === '') {
-                    e.target.previousSibling.previousSibling.classList.add('u-hidden');
-                    e.target.placeholder = _placeholder;
-                }
-            })
-        });
-
-        var textarea_input = document.querySelector('.panel-accessibility textarea');
-        var _placeholder_textarea;
-        textarea_input.addEventListener('focusin', function(e){
-            _placeholder_textarea = e.target.placeholder;
-            e.target.placeholder = ' ';
-            e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-            this.parentNode.style.height = (100 + '%');
-        });
-
-        textarea_input.addEventListener('focusout', function(e) {
-            if(e.target.value || e.target.placeholder) {
-                e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-            }
-            if (e.target.value === '') {
-                e.target.previousSibling.previousSibling.classList.add('u-hidden');
-                e.target.placeholder = _placeholder_textarea;
-            }
-        })
-    })();
-</script>
 
 
 
@@ -764,14 +621,7 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">minutes:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-<script>
-    /* Limit character count to 4 */
-    document.querySelector('.input-number').querySelector('input').oninput = function () {
-        if (this.value.length > 4) {
-            return this.value = this.value.slice(0,4);
-        }
-    }
-</script>
+
 
 
     </li>
@@ -780,14 +630,6 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">seconds:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-<script>
-    /* Limit character count to 4 */
-    document.querySelector('.input-number').querySelector('input').oninput = function () {
-        if (this.value.length > 4) {
-            return this.value = this.value.slice(0,4);
-        }
-    }
-</script>
 
 
     </li>
@@ -805,14 +647,7 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">From:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-<script>
-    /* Limit character count to 4 */
-    document.querySelector('.input-number').querySelector('input').oninput = function () {
-        if (this.value.length > 4) {
-            return this.value = this.value.slice(0,4);
-        }
-    }
-</script>
+
 
 
         </li>
@@ -821,14 +656,7 @@ cmd_menu.addEventListener('click', function(e){
     <label for="">To:</label>
     <input type="number" min="-9999" max="9999" maxlength="4" value="249">
 </div>
-<script>
-    /* Limit character count to 4 */
-    document.querySelector('.input-number').querySelector('input').oninput = function () {
-        if (this.value.length > 4) {
-            return this.value = this.value.slice(0,4);
-        }
-    }
-</script>
+
 
 
         </li>
@@ -859,117 +687,7 @@ cmd_menu.addEventListener('click', function(e){
         </div>
     </div>
 </div>
-<script>
-   (function() {
 
-        var description = document.querySelector('.description-container');
-        description.querySelector('.btn-container').addEventListener('click', function(e){
-            checkHeight(description);
-            toggleSvg(this.querySelector('svg'));
-            description.classList.toggle('white-bkgd');
-        });
-
-        var rights_sources = document.querySelector('.rights-sources-container');
-        rights_sources.querySelector('.btn-container').addEventListener('click', function(e){
-            checkHeight(rights_sources);
-            toggleSvg(this.querySelector('svg'));
-            rights_sources.classList.toggle('white-bkgd');
-        });
-
-        var interactive_profile = document.querySelector('.interactive-profile-container');
-        interactive_profile.querySelector('.btn-container').addEventListener('click', function(e){
-            checkHeight(interactive_profile);
-            toggleSvg(this.querySelector('svg'));
-            interactive_profile.classList.toggle('white-bkgd');
-        });
-
-        function checkHeight(target) {
-            if(target.querySelector('.dd-container').classList.contains('panel-closed')){
-                target.querySelector('.dd-container').classList.remove('panel-closed');
-            } else {
-                target.querySelector('.dd-container').classList.add('panel-closed');
-            }
-        }
-
-        function toggleSvg(svg) {
-            svg.classList.contains('u-rotate-90') ? svg.classList.remove('u-rotate-90') : svg.classList.add('u-rotate-90')
-        }
-
-        var dropdown_arrow = rights_sources.querySelector('.dropdown-input .icon-arrow');
-        dropdown_arrow.addEventListener('click', function(e) {
-            e.stopPropagation();
-            var parent = dropdown_arrow.parentNode.parentNode.parentNode.querySelector('.dropdown-input');
-            var target = parent.querySelector('.dropdown-content');
-            target.classList.toggle('u-hide');
-            var mask = rights_sources.querySelector('.dd-container');
-            mask.classList.toggle('remove-mask');
-            var label = parent.querySelector('label');
-            label.classList.toggle('u-hidden');
-        });
-
-        var dropdown_input = rights_sources.querySelector('.dropdown-input input');
-        dropdown_input.addEventListener('focusin', function(e){
-            _placeholder = e.target.placeholder;
-            e.target.placeholder = ' ';
-            e.target.previousSibling.previousSibling.classList.remove('u-hidden')
-        });
-        dropdown_input.addEventListener('focusout', function(e) {
-            if(e.target.value || e.target.placeholder) {
-                e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-            }
-            if (e.target.value === '') {
-                e.target.previousSibling.previousSibling.classList.add('u-hidden');
-                e.target.placeholder = _placeholder;
-            }
-        });
-
-        var inputs = document.querySelectorAll('.panel-metadata .txt-input');
-        inputs.forEach(function(input) {
-            var _placeholder;
-            input.addEventListener('focusin', function(e){
-                _placeholder = e.target.placeholder;
-                e.target.placeholder = ' ';
-                e.target.previousSibling.previousSibling.classList.remove('u-hidden')
-            });
-            input.addEventListener('focusout', function(e) {
-                if(e.target.value || e.target.placeholder) {
-                    e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-                }
-                if (e.target.value === '') {
-                    e.target.previousSibling.previousSibling.classList.add('u-hidden');
-                    e.target.placeholder = _placeholder;
-                }
-            })
-        });
-
-
-        var parent = document.querySelector('.panel-metadata');
-        var textarea_input = parent.querySelectorAll('textarea');
-        var _placeholder_textarea;
-
-        textarea_input.forEach(function(ta){
-            ta.addEventListener('focusin', function(e){
-                _placeholder_textarea = e.target.placeholder;
-                e.target.placeholder = ' ';
-                var textarea_label = this.parentNode.querySelector('label');
-                textarea_label.classList.remove('u-hidden');
-                this.parentNode.style.height = (100 + '%');
-             });
-
-             ta.addEventListener('focusout', function(e) {
-                var textarea_label = this.parentNode.querySelector('label');
-                textarea_label.classList.remove('u-hidden');
-                if(e.target.value) {
-                    textarea_label.classList.remove('u-hidden');
-                }
-                else if (e.target.value === '') {
-                   textarea_label.classList.add('u-hidden');
-                    e.target.placeholder = "Source";
-                }
-            })
-        });
-    })();
-</script>
 
 
         </div>
@@ -1013,79 +731,5 @@ cmd_menu.addEventListener('click', function(e){
 
     </div>
 </div>
-<script src="../../js/lib/autoresize-textarea/autosize.min.js"></script>
-<script src="../../js/widget-editor.js"></script>
-
-
-
-  <!--DO NOT REMOVE-->
-  <script type="text/json" id="sg-pattern-data-footer" class="sg-pattern-data">
-  {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"templates-header","lineagePath":"../../patterns/05-templates-header/05-templates-header.rendered.html"},{"lineagePattern":"modules-toolbar","lineagePath":"../../patterns/04-modules-toolbar/04-modules-toolbar.rendered.html"},{"lineagePattern":"modules-panel-settings","lineagePath":"../../patterns/04-modules-panel-settings/04-modules-panel-settings.rendered.html"},{"lineagePattern":"modules-panel-themes","lineagePath":"../../patterns/04-modules-panel-themes/04-modules-panel-themes.rendered.html"},{"lineagePattern":"modules-panel-accessibility","lineagePath":"../../patterns/04-modules-panel-accessibility/04-modules-panel-accessibility.rendered.html"},{"lineagePattern":"modules-panel-metadata","lineagePath":"../../patterns/04-modules-panel-metadata/04-modules-panel-metadata.rendered.html"},{"lineagePattern":"templates-sidebar-right","lineagePath":"../../patterns/05-templates-sidebar-right/05-templates-sidebar-right.rendered.html"}],"lineage":[{"lineagePattern":"templates-header","lineagePath":"../../patterns/05-templates-header/05-templates-header.rendered.html"},{"lineagePattern":"modules-toolbar","lineagePath":"../../patterns/04-modules-toolbar/04-modules-toolbar.rendered.html"},{"lineagePattern":"modules-panel-settings","lineagePath":"../../patterns/04-modules-panel-settings/04-modules-panel-settings.rendered.html"},{"lineagePattern":"modules-panel-themes","lineagePath":"../../patterns/04-modules-panel-themes/04-modules-panel-themes.rendered.html"},{"lineagePattern":"modules-panel-accessibility","lineagePath":"../../patterns/04-modules-panel-accessibility/04-modules-panel-accessibility.rendered.html"},{"lineagePattern":"modules-panel-metadata","lineagePath":"../../patterns/04-modules-panel-metadata/04-modules-panel-metadata.rendered.html"},{"lineagePattern":"templates-sidebar-right","lineagePath":"../../patterns/05-templates-sidebar-right/05-templates-sidebar-right.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"pages"},"patternExtension":"mustache","patternName":"Widget Editor","patternPartial":"pages-widget-editor","patternState":"","patternEngineName":"mustache","extraOutput":{}}
-</script>
-
-<script>
-  /*!
-   * scriptLoader - v0.1
-   *
-   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
-   * Licensed under the MIT license
-   *
-   */
-  
-  var scriptLoader = {
-    
-    run: function(js,cb,target) {
-      var s  = document.getElementById(target+'-'+cb);
-      for (var i = 0; i < js.length; i++) {
-        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
-        var c   = document.createElement('script');
-        c.src   = '../../'+src+'?'+cb;
-        if (typeof js[i] != 'string') {
-          if (js[i].dep !== undefined) {
-            c.onload = function(dep,cb,target) {
-              return function() {
-                scriptLoader.run(dep,cb,target);
-              }
-            }(js[i].dep,cb,target);
-          }
-        }
-        s.parentNode.insertBefore(c,s);
-      }
-    }
-    
-  }
-</script>
-
-<script id="pl-js-polyfill-insert-1477072478821">
-  (function() {
-    if (self != top) {
-      var cb = '1477072478821';
-      var js = [];
-      if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
-        js.push('styleguide/bower_components/classList.min.js');
-      }
-      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
-    }
-  })();
-</script>
-
-<script id="pl-js-insert-1477072478821">
-  (function() {
-    if (self != top) {
-      var cb = '1477072478821';
-      var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
-      scriptLoader.run(js,cb,'pl-js-insert');
-    }
-  })();
-</script>
-
-
-
-
-    <script src="/js/lib/autoresize-textarea/autosize.js"></script>
-    <!-- Auth0 lock script -->
-    <script src="https://cdn.auth0.com/js/lock/10.3.0/lock.min.js"></script>
-    <script src="/js/lib/auth0/auth0-variables.js"></script>
-    <script src="/js/lib/auth0/app.js"></script>
   </body>
 </html>
