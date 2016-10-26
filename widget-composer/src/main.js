@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import App from './App'
 import Widget from './Widget'
-import Panelsettings from './Panelsettings'
+import App from './App'
 import router from './router'
+import Panelsettings from './Panelsettings'
 
 /* eslint-disable no-new */
 new Vue({
