@@ -23,8 +23,8 @@ export default {
 h1, h2 {
     font-weight: normal;
 }
-input{
-    height: 2em;
-    width: calc(100% - 20em);
+textarea{
+    height: 4em;
+    width: calc(100% - 10em);
 }
 </style>
