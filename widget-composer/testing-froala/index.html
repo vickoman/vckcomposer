@@ -41,13 +41,17 @@
   <script type="text/javascript" src="froala_2.3.4/js/plugins/colors.min.js"></script>
   <script type="text/javascript" src="froala_2.3.4/js/plugins/image.min.js"></script>
   <script type="text/javascript" src="froala_2.3.4/js/plugins/image_manager.min.js"></script>
+  <script type="text/javascript" src="froala_2.3.4/js/plugins/align.min.js"></script>
+  <script type="text/javascript" src="froala_2.3.4/js/plugins/lists.min.js"></script>
+  <script type="text/javascript" src="froala_2.3.4/js/plugins/link.min.js"></script>
   <script type="text/javascript">
   	$.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
   	$(function() {
         $('div#froala').froalaEditor({
             toolbarInline: true,
             charCounterCount: true,
-            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo']
+            //'insertImage', 'insertLink', 'insertFile', 'insertVideo',
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink']
         })
     });
 
