@@ -1,9 +1,10 @@
 <template>
     <section class="widgetcontent">
         
-        <p v-if="content">Widget Content: {{ content }}</p>
-        <label>WIDGET CONTENT: </label><textarea v-model="content" placeholder="add a title"></textarea>
-        pepe
+        <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p>
+        <label>WIDGET CONTENT: </label>
+        <textarea v-model="content" placeholder="add a title"></textarea>
+        
     </section>
 </template>
 
@@ -16,9 +17,13 @@ export default {
     name: 'widgetcontent',
     data () {
         return {
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum egestas ipsum nec malesuada. Aliquam sagittis leo et diam ultricies, sit amet tincidunt tortor placerat. Integer malesuada nibh volutpat, faucibus ipsum a, blandit orci. Nulla facilisi. Cras egestas leo in imperdiet aliquet. Suspendisse ultricies pharetra cursus. Vestibulum felis leo, porttitor dictum tempor a, consequat ac augue. Aliquam a viverra ex, nec interdum neque. Vestibulum imperdiet dolor nisl, quis suscipit sapien ultricies id. Ut pulvinar erat turpis, id blandit felis sodales nec. Aliquam scelerisque tempus dui, at tincidunt enim facilisis nec. Proin orci augue, commodo sed dignissim non, pretium sed nisi. Vestibulum vulputate sem at lacus imperdiet lacinia. Fusce eu felis vitae eros semper egestas sit amet nec diam. Maecenas commodo massa nec eros suscipit hendrerit. Praesent euismod convallis urna quis facilisis.'
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum egestas ipsum nec malesuada. Aliquam sagittis leo et diam ultricies, sit amet tincidunt tortor placerat. Integer malesuada nibh volutpat, faucibus ipsum a, blandit orci. Nulla facilisi. Cras egestas leo in imperdiet aliquet. Suspendisse ultricies pharetra cursus. Vestibulum felis leo, porttitor dictum tempor a, consequat ac augue. Aliquam a viverra ex, nec interdum neque. Vestibulum imperdiet dolor nisl, quis suscipit sapien ultricies id. Ut pulvinar erat turpis, id blandit felis sodales nec. Aliquam scelerisque tempus dui, at tincidunt enim facilisis nec. Proin orci augue, commodo sed dignissim non, pretium sed nisi. Vestibulum vulputate sem at lacus imperdiet lacinia. Fusce eu felis vitae eros semper egestas sit amet nec diam. Maecenas commodo massa nec eros suscipit hendrerit. Praesent euismod convallis urna quis facilisis.',
+
         }
-    }
+    },
+    directives: {
+        'froala': require('../directives/Froala'),
+    },
 }
 </script>
 
