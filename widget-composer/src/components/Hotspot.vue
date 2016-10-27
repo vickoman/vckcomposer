@@ -3,9 +3,11 @@
             <!--Header -->
             <header class="header" >
                 <div class="header__title">Widget Editor</div>
-                <svg>
-                    <use xlink:href="#close-x"></use>
-                </svg>
+                <router-link to="/widgetEditor">
+                    <svg>
+                        <use xlink:href="#close-x"></use>
+                    </svg>
+                </router-link>
                 
             </header>
             <!-- Widget Editor Workspace -->
