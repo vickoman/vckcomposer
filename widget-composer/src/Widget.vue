@@ -11,6 +11,7 @@ import Widgetheader from './components/Widgetheader'
 import Widgetfooter from './components/Widgetfooter'
 import Widgetcontent from './components/Widgetcontent'
 
+
 export default {
   name: 'widget',
   components: {
