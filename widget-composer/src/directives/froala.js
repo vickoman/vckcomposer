@@ -1,3 +1,9 @@
+
+// import $ from 'jquery'
+// import 'froala-editor/js/froala_editor.js'
+// import 'froala'
+
+
 const opts = {
     widget: {
         toolbarInline: true,
