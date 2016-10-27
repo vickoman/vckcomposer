@@ -3,7 +3,6 @@
 <head>
 	<title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	
 	<link rel="stylesheet" href="froala_2.3.4/css/themes/gray.css">
 	<link rel="stylesheet" href="froala_2.3.4/css/froala_style.css">
 	<link rel="stylesheet" href="froala_2.3.4/css/froala_editor.css">
@@ -33,9 +32,9 @@
 </head>
 <body>
     <div id="app">
-        <div v-froala="{type:'widget', uploadPath: 'pepe', model: model, placeholder: 'Widget Text!!!!'}">
+        <div v-froala="{type:'widget',placeholder: 'Pepe'}">
     	</div>
-        <div v-html="model" id="froala" v-froala="{type:'widget', uploadPath: 'pepe', model: model, placeholder: 'Enter text Here!'}">
+        <div id="froala" v-froala="{type:'widget', uploadPath: 'pepe', model: model, placeholder: 'Enter text Here!'}">
            
         
         </div>
@@ -85,7 +84,7 @@
 
             Vue.directive('froala', {
             // params: ['upload-path', 'type'],
-
+            twoWay: true,
             bind: function(el, binding, vnode) {
                 let $el = $(el);
                 /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
@@ -99,10 +98,12 @@
                     charCounterCount: true,
                     toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
                     initOnClick: true,
+                    typingTimer: 999,
                 }
                 let options = {};
 
                 if (binding.value.model){
+                    $el.html(binding.value.model)
                 }
 
                 let editorType = binding.value.type || 'default'
@@ -118,10 +119,24 @@
 
                 console.log(vnode.tag);
                 console.log('el',$el, $el.html());
-                setTimeout(() => { $el.froalaEditor(options) }, 200);
+                setTimeout(() => { 
+                	$el.froalaEditor(options) 
+                	   //  $('body').on('blur', $('#froala'), function(el, el2){
+                	   //  console.log('blur', el, this)
+            	       //  // binding.value.model = $el.html()
+                    // })
+                }, 200);
+
+            
+               
             },
-            update: () => {
-            	console.log('update')
+            unbind: function () {
+                // don't forget to teardown listeners and stuff.
+                $(this.el).off().froalaEditor('destroy')
+            },
+            update: (el, binding, vnode) => {
+            	console.log('update', el, binding, vnode)
+            	$(el).html(binding.value.model)
             }
             })
 

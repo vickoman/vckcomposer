@@ -3,7 +3,7 @@
         
         <p v-if="content">Widget Content: {{ content }}</p>
         <label>WIDGET CONTENT: </label><textarea v-model="content" placeholder="add a title"></textarea>
-        
+        pepe
     </section>
 </template>
 
@@ -11,6 +11,7 @@
 
 
 <script>
+
 export default {
     name: 'widgetcontent',
     data () {
