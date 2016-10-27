@@ -32,7 +32,7 @@ var froala = {
     // twoWay: true,
     bind: function(el, binding, vnode) {
         $.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
-        let $el = $(el);
+        var $el = $(el);
         /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
         $el.on('froalaEditor.focus',        (e, editor) => editor.$box.addClass('focus') );
         $el.on('froalaEditor.blur',         (e, editor) => editor.$box.removeClass('focus') );
@@ -71,10 +71,15 @@ var froala = {
                 //  console.log('blur', el, this)
             	//  // binding.value.model = $el.html()
             // })
-        }, 1100);
+        }, 200);
 
-    
         
+        $el.on('froalaEditor.blur', 
+        ()=>{
+            console.log('blur froala', this, binding)
+            vm.$emit('blur', event, ui, $el)
+        })
+
     },
     unbind: function () {
         // don't forget to teardown listeners and stuff.

@@ -84,8 +84,8 @@
 
             Vue.directive('froala', {
             // params: ['upload-path', 'type'],
-            twoWay: true,
-            bind: function(el, binding, vnode) {
+            // twoWay: true,
+            bind: function(el, binding, vnode, a,b) {
                 let $el = $(el);
                 /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
                 $el.on('froalaEditor.focus',        (e, editor) => editor.$box.addClass('focus') );
@@ -114,10 +114,10 @@
                     // imageUploadURL: binding.value.uploadPath || ''
                 })
 
-                console.log('binding', binding)
+                console.log('binding', binding, a,b)
 
 
-                console.log(vnode.tag);
+                console.log(vnode);
                 console.log('el',$el, $el.html());
                 setTimeout(() => { 
                 	$el.froalaEditor(options) 

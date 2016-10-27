@@ -4,7 +4,7 @@
         <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p>
         <label>WIDGET CONTENT: </label>
         <textarea v-model="content" placeholder="add a title"></textarea>
-        
+        <froala @froala-blur="froalaBl"></froala>
     </section>
 </template>
 
@@ -12,6 +12,7 @@
 
 
 <script>
+import Froala from './Froala'
 
 export default {
     name: 'widgetcontent',
@@ -23,6 +24,21 @@ export default {
     },
     directives: {
         'froala': require('../directives/Froala'),
+    },
+    components:{
+        Froala
+    },
+    methods:{
+        froalaBl: function(){
+            console.log('aloo')
+        }
+    },
+    events: {
+         /* Listen for the drop event from the directive */
+        froalaBlur: function(event, ui, el) {
+           /* the logic here */
+           console.log('froalaBlur in Component', event, ui, el)
+        },
     },
 }
 </script>
