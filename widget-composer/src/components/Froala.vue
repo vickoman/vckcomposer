@@ -5,6 +5,15 @@
 </template>
 
 <script>
+import "froala-editor/css/froala_style.min.css"
+import "froala-editor/css/froala_editor.min.css"
+import "froala-editor/css/plugins/colors.min.css"
+import "froala-editor/css/plugins/image.min.css"
+import "froala-editor/css/plugins/image_manager.min.css"
+import "font-awesome/css/font-awesome.min.css"
+
+import "froala-editor/js/froala_editor.min.js"
+
 export default {
   name: 'Froala-Editor',
   data () {

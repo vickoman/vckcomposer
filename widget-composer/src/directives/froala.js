@@ -2,7 +2,7 @@
 // import $ from 'jquery'
 // import 'froala-editor/js/froala_editor.js'
 // import 'froala'
-import "./froala.css"
+// import "froala-editor/css/froala_style.min.css"
 
 const opts = {
     widget: {
