@@ -2,7 +2,7 @@
 // import $ from 'jquery'
 // import 'froala-editor/js/froala_editor.js'
 // import 'froala'
-
+import "./froala.css"
 
 const opts = {
     widget: {
@@ -33,6 +33,8 @@ var froala = {
     bind: function(el, binding, vnode) {
         $.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
         var $el = $(el);
+        var self = this;
+        console.log('this',this)
         /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
         $el.on('froalaEditor.focus',        (e, editor) => editor.$box.addClass('focus') );
         $el.on('froalaEditor.blur',         (e, editor) => editor.$box.removeClass('focus') );
@@ -75,9 +77,9 @@ var froala = {
 
         
         $el.on('froalaEditor.blur', 
-        ()=>{
-            console.log('blur froala', this, binding)
-            vm.$emit('blur', event, ui, $el)
+        function(event, ui, el){
+            console.log('blur froala', self)
+            this.$emit('blur', event, ui, $el)
         })
 
     },

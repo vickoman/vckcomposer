@@ -29,7 +29,7 @@ export default {
         Froala
     },
     methods:{
-        froalaBl: function(){
+        froalaBl: function(el, model){
             console.log('aloo')
         }
     },
