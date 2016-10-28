@@ -13,7 +13,7 @@
     }
 </style>
 <template>
-  <section v-html="content" class="froala-editor-container" v-on:click="clicked">
+  <section v-html="content" class="froala-editor-container">
   </section>
 </template>
 
@@ -52,6 +52,7 @@ export default {
     $.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
     console.log('args', arguments, this.$el)
     let $el = $(this.$el);
+    let self = this;
     /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
     $el.on('froalaEditor.focus',        (e, editor) => editor.$box.addClass('focus') );
     $el.on('froalaEditor.blur',         (e, editor) => editor.$box.removeClass('focus') );
@@ -95,8 +96,23 @@ export default {
     $el.on('froalaEditor.blur', 
         (event, ui, el)=>{
             console.log('blur froala', this)
-            this.$emit('froalaBlur', event, ui, $el)
+            // this.content = $el.html()
+            this.$emit('blur', event, ui, $el.html())
     })
+
+    $el.on('froalaEditor.contentChanged', function (e, editor) {
+      // Do something here.
+      console.log('contentchanged')
+      self.$emit('changed', e, editor, $el.html())
+
+    });
+
+    $el.on('froalaEditor.focus', function (e, editor) {
+      // Do something here.
+      console.log('focus')
+      self.$emit('focus', e, editor)
+
+    });
   }
 }
 // module.exports = froala
