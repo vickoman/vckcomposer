@@ -12,7 +12,15 @@ import "froala-editor/css/plugins/image.min.css"
 import "froala-editor/css/plugins/image_manager.min.css"
 import "font-awesome/css/font-awesome.min.css"
 
+import "jquery"
+
 import "froala-editor/js/froala_editor.min.js"
+import "froala-editor/js/plugins/colors.min.js"
+import "froala-editor/js/plugins/image.min.js"
+import "froala-editor/js/plugins/image_manager.min.js"
+import "froala-editor/js/plugins/align.min.js"
+import "froala-editor/js/plugins/link.min.js"
+import "froala-editor/js/plugins/lists.min.js"
 
 export default {
   name: 'Froala-Editor',
