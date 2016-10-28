@@ -1,10 +1,8 @@
 <template>
     <section class="widgetcontent">
-        
-        <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p>
+        <froala @froala-blur="froalaBl" :content="content"></froala>
+        <!-- <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p> -->
         <label>WIDGET CONTENT: </label>
-        <textarea v-model="content" placeholder="add a title"></textarea>
-        <froala @froala-blur="froalaBl"></froala>
     </section>
 </template>
 
@@ -18,8 +16,7 @@ export default {
     name: 'widgetcontent',
     data () {
         return {
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum egestas ipsum nec malesuada. Aliquam sagittis leo et diam ultricies, sit amet tincidunt tortor placerat. Integer malesuada nibh volutpat, faucibus ipsum a, blandit orci. Nulla facilisi. Cras egestas leo in imperdiet aliquet. Suspendisse ultricies pharetra cursus. Vestibulum felis leo, porttitor dictum tempor a, consequat ac augue. Aliquam a viverra ex, nec interdum neque. Vestibulum imperdiet dolor nisl, quis suscipit sapien ultricies id. Ut pulvinar erat turpis, id blandit felis sodales nec. Aliquam scelerisque tempus dui, at tincidunt enim facilisis nec. Proin orci augue, commodo sed dignissim non, pretium sed nisi. Vestibulum vulputate sem at lacus imperdiet lacinia. Fusce eu felis vitae eros semper egestas sit amet nec diam. Maecenas commodo massa nec eros suscipit hendrerit. Praesent euismod convallis urna quis facilisis.',
-
+            content: '<h4>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4> <h5>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h5> <hr> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vehicula nibh vehicula interdum fermentum. </p><img class="fr-dib fr-draggable" src="http://www.thetradiewebsite.com/wp-content/uploads/2013/10/img-6.jpg"> <p> Curabitur sagittis in lorem ac molestie. Suspendisse quis tempor risus. Sed cursus semper odio, et efficitur dui lacinia vel. Aenean pulvinar, tellus eget efficitur tincidunt, elit lorem elementum purus, id blandit enim orci iaculis turpis. Maecenas in libero quis arcu faucibus hendrerit. Maecenas viverra, ex vitae aliquet elementum, tellus est porttitor massa, in pulvinar augue massa sit amet nunc. Donec suscipit fringilla aliquam. Maecenas malesuada iaculis odio, non luctus magna dignissim eu. Nunc non accumsan urna. Vestibulum eu metus molestie, tincidunt est eget, tincidunt lorem. Donec eu augue porta, finibus magna quis, porttitor arcu. Etiam efficitur ligula justo, vitae molestie tellus feugiat non. In commodo dui ac lacus tempus, in porttitor tortor suscipit. Suspendisse aliquet velit nec imperdiet scelerisque. Aliquam viverra quis dolor id mollis. </p>'
         }
     },
     directives: {
