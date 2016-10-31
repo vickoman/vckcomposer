@@ -1,8 +1,5 @@
 <template>
     <div class="panel-content">
-        <pre>
-            {{$data | json}}
-        </pre>
         <div class="panel-header">{{ panelTitle }}</div>
         <ul>
             <li class="kds-mb-24">
@@ -127,9 +124,6 @@ export default {
         return {
             panelTitle: 'Settings'
         }
-    },
-    props: {
-        item: Object,
     }
 }
 </script>
