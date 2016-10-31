@@ -38,7 +38,7 @@
             <div class="workspace">
                 <!-- Widget Canvas -->
                 <div class="canvas">
-                    <div class="toolbar-widget">
+                    <div class="toolbar-widget" id="widget-toolbar">
                         <ul>
                             <li class="widget-title">
                                 <label class="widget-title__label" for="">HOTSPOT WIDGET:</label>
@@ -79,45 +79,12 @@
                 </div>
             </div>
         </div>
-        <script>
-        var cmd_menu_container = document.querySelector('.cmd-menu-container');
-        var cmd_menu = cmd_menu_container.querySelector('.cmd-menu');
-        var cmd_tools = cmd_menu_container.querySelector('.cmd-tools');
-        var menu_closed = true;
-        cmd_menu.addEventListener('click', function(e){
-        if(menu_closed) {
-        cmd_tools.classList.add('cmd-tools--open')
-        cmd_menu.classList.add('cmd-menu--active')
-        menu_closed = false;
-        } else {
-        cmd_tools.classList.remove('cmd-tools--open')
-        cmd_menu.classList.remove('cmd-menu--active')
-        menu_closed = true;
-        }
-        });
-        </script>
     </li>
     <li class="button-preview">
         <button class="button-standard-gray">Preview</button>
     </li>
 </ul>
 </div>
-
-<script>
-var title_input = document.querySelector('.toolbar-widget').querySelector('input');
-title_input.addEventListener('focusin', function(e){
-_placeholder = e.target.placeholder;
-e.target.placeholder = '';
-});
-title_input.addEventListener('focusout', function(e) {
-if(e.target.value || e.target.placeholder) {
-e.target.previousSibling.previousSibling.classList.remove('u-hidden');
-}
-if (e.target.value === '') {
-e.target.placeholder = _placeholder;
-}
-})
-</script>
 <div class="artboard-container">
 <div class="media-tools">
     <ul>
