@@ -1,6 +1,6 @@
 # widget-composer
 
-> knowbly widget composer
+> widget authoring tool for Knowbly
 
 ## Build Setup
 
