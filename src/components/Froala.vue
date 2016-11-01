@@ -71,7 +71,7 @@ export default {
   },
   mounted: function(){
     $.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
-    console.log('args', arguments, this.$el)
+    // console.log('args', arguments, this.$el)
     let $el = $(this.$el);
     let self = this;
     /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
@@ -86,32 +86,17 @@ export default {
         initOnClick: true,
         typingTimer: 999,
     }
-    // let options = {};
-
-    // if (binding.value.model){
-    //     $el.html(binding.value.model)
-    // }
 
     let editorType = this.editorType || 'default'
     
     $.extend(defaults, opts[editorType],{
         placeholderText: this.placeholder || '',
-    //     // fileUploadURL: binding.value.uploadPath || '',
-    //     // imageUploadURL: binding.value.uploadPath || ''
     })
-
-    // console.log('binding', binding)
-    // console.log('options', options)
-
 
     // console.log(vnode.tag);
     // console.log('el',$el, $el.html());
     setTimeout(() => { 
         $el.froalaEditor(defaults) 
-            //  $('body').on('blur', $('#froala'), function(el, el2){
-            //  console.log('blur', el, this)
-          //  // binding.value.model = $el.html()
-        // })
     }, 200);
 
     $el.on('froalaEditor.blur', 
@@ -125,6 +110,7 @@ export default {
       // Do something here.
       console.log('contentchanged')
       if (!window.undoPressed && !window.redoPressed) {
+          editorUndoOrder.splice(editorUndoCurrentPosition + 1, editorUndoOrder.length)
           window.editorUndoOrder.push(editor)
           window.editorUndoCurrentPosition = window.editorUndoOrder.length - 1
           console.log('contentchanged', editorUndoOrder.map(value => value['id']), window.editorUndoCurrentPosition)
@@ -150,5 +136,4 @@ export default {
 // module.exports = froala
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 
