@@ -1,7 +1,7 @@
 <template>
     <section class="widgetfooter">
-        <label>CAPTION TEXT: </label> <froala :content="caption" placeholder="add a caption text" editor-type="headerFooter"></froala>
-        <label>CREDIT TEXT: </label> <froala :content="credit"  placeholder="add a credit text"  editor-type="headerFooter"></froala>
+        <label>CAPTION TEXT: </label> <froala :content="caption" placeholder="add a caption text" group="widget" editor-type="headerFooter"></froala>
+        <label>CREDIT TEXT: </label> <froala :content="credit"  placeholder="add a credit text"   group="widget" editor-type="headerFooter"></froala>
     </section>
 </template>
 

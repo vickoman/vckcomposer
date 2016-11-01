@@ -1,7 +1,7 @@
 <template>
     <section class="widgetheader">
-      <label>TITLE TEXT: </label> <froala :content="title" placeholder="add a title text" editor-type="headerFooter"></froala>
-        <label>LEADIN TEXT: </label> <froala :content="leadin"  placeholder="add a leadin text"  editor-type="headerFooter"></froala>
+      <label>TITLE TEXT: </label> <froala    group="widget" :content="title" placeholder="add a title text" editor-type="headerFooter"></froala>
+        <label>LEADIN TEXT: </label> <froala group="widget" :content="leadin"  placeholder="add a leadin text"  editor-type="headerFooter"></froala>
     </section>
 </template>
 

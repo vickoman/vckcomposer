@@ -58,12 +58,7 @@ const opts = {
 
 export default {
   name: 'Froala-Editor',
-  props:['content', 'placeholder', 'editorType'],
-  // data () {
-  //   return {
-  //   }
-  // },
-  // props: ['size', 'myMessage'],
+  props:['content', 'placeholder', 'editorType', 'group'],
   methods: {
     clicked: function(){
       console.log('clicked', this)
@@ -74,10 +69,6 @@ export default {
     // console.log('args', arguments, this.$el)
     let $el = $(this.$el);
     let self = this;
-    /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
-    $el.on('froalaEditor.focus',        (e, editor) => editor.$box.addClass('focus') );
-    $el.on('froalaEditor.blur',         (e, editor) => editor.$box.removeClass('focus') );
-    $el.on('froalaEditor.image.error',  (e, editor, error) => alert(error.message) );*/
 
     let defaults = {
         toolbarInline: true,
@@ -105,23 +96,25 @@ export default {
             // this.content = $el.html()
             this.$emit('blur', event, ui, $el.html())
     })
+    this.group = this.group || 'global'
 
     $el.on('froalaEditor.contentChanged', function (e, editor) {
       // Do something here.
-      console.log('contentchanged')
+      console.log('contentchanged',editor, self.group)
+      // self.$emit('froalachanged', editor, this.group)
+
       if (!window.undoPressed && !window.redoPressed) {
-          editorUndoOrder.splice(editorUndoCurrentPosition + 1, editorUndoOrder.length)
-          window.editorUndoOrder.push(editor)
-          window.editorUndoCurrentPosition = window.editorUndoOrder.length - 1
-          console.log('contentchanged', editorUndoOrder.map(value => value['id']), window.editorUndoCurrentPosition)
-      // self.$emit('changed', e, editor, $el.html())
-          
+          editorUndoOrder[self.group].splice(editorUndoCurrentPosition + 1, editorUndoOrder[self.group].length)
+          window.editorUndoOrder[self.group].push(editor)
+          window.editorUndoCurrentPosition = window.editorUndoOrder[self.group].length - 1
+          console.log('contentchanged', editorUndoOrder[self.group].map(value => value['id']), window.editorUndoCurrentPosition)
+          self.$emit('froalachanged', editor, this.group)
       }else
       {
           window.undoPressed = false
           window.redoPressed = false
       }
-      self.$emit('changed', e, editor, $el.html())
+      // self.$emit('changed', e, editor, $el.html())
 
     });
 

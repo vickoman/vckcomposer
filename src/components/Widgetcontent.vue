@@ -1,8 +1,8 @@
 <template>
     <section class="widgetcontent">
         <label>WIDGET CONTENT: </label>
-        <froala :content="content" placeholder="Enter content" editor-type="widget"></froala>
-        <froala @blur="froalaBlur" placeholder="Enter content" @focus="froalaFocus" @changed="froalaBlur" content=""></froala>
+        <froala @froalachanged="froalachanged" :content="content" placeholder="Enter content" editor-type="widget" group="widget"></froala>
+        <!-- <froala @blur="froalaBlur" placeholder="Enter content" @focus="froalaFocus" @changed="changed" content="" group="widget"></froala> -->
         <!-- <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p> -->
         
     </section>
@@ -26,21 +26,31 @@ export default {
         Froala
     },
     methods:{
-        froalaBlur: function(event, froala, content){
+        froalachanged: function(event, editor, group){
             // this.content = content
-            console.log('parent', this)
+            console.log('changed parent', this)
+            // this.$emit('froalachanged', editor, group)
         },
-        changed: function(event, froala, content){
-            // this.content = content
-            console.log('parent', this)
-        },
-        froalaFocus: function(e, editor){
-            // this.content = content
-            console.log('focus parent', editor)
-            this.activeFroala = editor
-        },
-        
     },
+    // mounted: function () {
+    //     this.$on('froalachanged', function (editor, group) {
+    //     console.log('froalachanged', editor, group)
+    //     })
+    //     this.$on('changed', function (editor, group) {
+    //     console.log('froalachanged', editor, group)
+    //     })
+    // },
+    // events: {
+    //     froalachanged: function (argument) {
+    //     console.log('froalachanged', editor, group)
+    //     // logic
+    //     },
+    //     changed: function (argument) {
+    //     console.log('froalachanged', editor, group)
+    //     // logic
+    //     },
+
+    // },
    
 }
 

@@ -49,51 +49,43 @@
 </template>
 
 <script>
-window.editorUndoOrder = window.editorUndoOrder || []
+window.editorUndoOrder = window.editorUndoOrder || {widget:[]}
 window.editorUndoCurrentPosition = window.editorUndoCurrentPosition || 0
 export default {
   name: 'widgetToolbar',
   methods:{
     undo: function(){
-      console.log('before undo', editorUndoOrder.map(value => value['id']), editorUndoCurrentPosition)
+      console.log('before undo', editorUndoOrder.widget.map(value => value['id']), editorUndoCurrentPosition)
       window.undoPressed = true
-      if (editorUndoOrder[editorUndoCurrentPosition].undo.canDo()){
-          editorUndoOrder[editorUndoCurrentPosition].undo.run()
+      if (editorUndoOrder.widget[editorUndoCurrentPosition].undo.canDo()){
+          editorUndoOrder.widget[editorUndoCurrentPosition].undo.run()
       }
       if (editorUndoCurrentPosition){
           editorUndoCurrentPosition = editorUndoCurrentPosition - 1
       }
-      console.log('undo', editorUndoOrder.map(value => value['id']), editorUndoCurrentPosition) 
+      console.log('undo', editorUndoOrder.widget.map(value => value['id']), editorUndoCurrentPosition) 
     },
     redo: function(){
-      console.log('before redo', editorUndoOrder.map(value => value['id']), editorUndoCurrentPosition)
+      console.log('before redo', editorUndoOrder.widget.map(value => value['id']), editorUndoCurrentPosition)
       window.redoPressed = true
-      if (editorUndoOrder[editorUndoCurrentPosition].undo.canRedo()){
-          editorUndoOrder[editorUndoCurrentPosition].undo.redo()
+      if (editorUndoOrder.widget[editorUndoCurrentPosition].undo.canRedo()){
+          editorUndoOrder.widget[editorUndoCurrentPosition].undo.redo()
       }
-      if (editorUndoCurrentPosition + 1 < editorUndoOrder.length){
+      if (editorUndoCurrentPosition + 1 < editorUndoOrder.widget.length){
           editorUndoCurrentPosition = editorUndoCurrentPosition + 1
       }
-      console.log('redo', editorUndoOrder.map(value => value['id']), editorUndoCurrentPosition) 
+      console.log('redo', editorUndoOrder.widget.map(value => value['id']), editorUndoCurrentPosition) 
     }
-  }
+  },
+  // mounted: function () {
+  //   this.$on('froalachanged', function (editor, group) {
+  //     console.log('froalachanged', editor, group)
+  //   })
+  //   this.$on('changed', function (editor, group) {
+  //     console.log('froalachanged', editor, group)
+  //   })
+  // }
 }
-// var cmd_menu_container = document.querySelector('.cmd-menu-container');
-// var cmd_menu = cmd_menu_container.querySelector('.cmd-menu');
-// var cmd_tools = cmd_menu_container.querySelector('.cmd-tools');
-// var menu_closed = true;
-// cmd_menu.addEventListener('click', function(e){
-// if(menu_closed) {
-// cmd_tools.classList.add('cmd-tools--open')
-// cmd_menu.classList.add('cmd-menu--active')
-// menu_closed = false;
-// } else {
-// cmd_tools.classList.remove('cmd-tools--open')
-// cmd_menu.classList.remove('cmd-menu--active')
-// menu_closed = true;
-// }
-// });
-
 
 </script>
 
