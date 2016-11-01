@@ -9,11 +9,11 @@
     </div>
     </li>
     <li>
-    <div class="cmd-menu-container">
+    <div class="cmd-menu-container" v-on:click="isActive = !isActive" v-bind:class="{ active: isActive }">
     <div class="cmd-menu">
-    <svg>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#knife"></use>
-    </svg>
+      <svg>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#knife"></use>
+      </svg>
     </div>
     <div class="mask-cmd-tools">
     <div class="cmd-tools">
@@ -53,7 +53,16 @@ window.editorUndoOrder = window.editorUndoOrder || {widget:[]}
 window.editorUndoCurrentPosition = window.editorUndoCurrentPosition || 0
 export default {
   name: 'widgetToolbar',
+  data () {
+    return {
+      isActive: false
+    }
+  },
   methods:{
+    myFilter: function(){
+        this.isActive = !this.isActive;
+      // some code to filter users
+    },
     undo: function(){
       console.log('before undo', editorUndoOrder.widget.map(value => value['id']), editorUndoCurrentPosition)
       window.undoPressed = true
@@ -90,7 +99,10 @@ export default {
 </script>
 
 <style>
-body .cmd-tools{
+body .cmd-menu-container .cmd-tools{
+  right: -200px;
+}
+body .cmd-menu-container.active .cmd-tools{
   right: 0px;
 }
 </style>
