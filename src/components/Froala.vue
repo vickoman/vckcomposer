@@ -35,9 +35,30 @@ import "froala-editor/js/plugins/align.min.js"
 import "froala-editor/js/plugins/link.min.js"
 import "froala-editor/js/plugins/lists.min.js"
 
+const opts = {
+    widget: {
+        toolbarInline: true,
+        charCounterCount: true,
+        toolbarButtons:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtonsSM:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink']
+    },
+    default: {
+        toolbarInline: true,
+        charCounterCount: true,
+        toolbarButtonsSM:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtons:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink']
+    },
+    headerFooter: {
+        toolbarButtons: ['bold', 'italic', 'underline', '|', 'insertLink', '|', 'undo', 'redo', 'clearFormatting', '|', 'html'],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', '|', 'insertLink', '|', 'undo', 'redo', 'clearFormatting', '|', 'html'],
+    }
+}
+
 export default {
   name: 'Froala-Editor',
-  props:['content'],
+  props:['content', 'placeholder', 'editorType'],
   // data () {
   //   return {
   //   }
@@ -71,13 +92,13 @@ export default {
     //     $el.html(binding.value.model)
     // }
 
-    // let editorType = binding.value.type || 'default'
+    let editorType = this.editorType || 'default'
     
-    // $.extend(options, defaults, opts[editorType],{
-    //     placeholderText: binding.value.placeholder || ''
+    $.extend(defaults, opts[editorType],{
+        placeholderText: this.placeholder || '',
     //     // fileUploadURL: binding.value.uploadPath || '',
     //     // imageUploadURL: binding.value.uploadPath || ''
-    // })
+    })
 
     // console.log('binding', binding)
     // console.log('options', options)
@@ -103,6 +124,17 @@ export default {
     $el.on('froalaEditor.contentChanged', function (e, editor) {
       // Do something here.
       console.log('contentchanged')
+      if (!window.undoPressed && !window.redoPressed) {
+          window.editorUndoOrder.push(editor)
+          window.editorUndoCurrentPosition = window.editorUndoOrder.length - 1
+          console.log('contentchanged', editorUndoOrder.map(value => value['id']), window.editorUndoCurrentPosition)
+      // self.$emit('changed', e, editor, $el.html())
+          
+      }else
+      {
+          window.undoPressed = false
+          window.redoPressed = false
+      }
       self.$emit('changed', e, editor, $el.html())
 
     });

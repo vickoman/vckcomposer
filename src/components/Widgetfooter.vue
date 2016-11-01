@@ -1,17 +1,13 @@
 <template>
     <section class="widgetfooter">
-        
-        <h5 v-if="caption">Your caption is: {{ caption }}</h5>
-        <label>CAPTION TEXT: </label><input v-model="caption" placeholder="add a caption text">
-        <br/>
-        
-        <h6 v-if="credit">Your credit is: {{ credit }}</h6>
-        <label>CREDIT TEXT: </label><input v-model="credit" placeholder="add a credit text">
-
+        <label>CAPTION TEXT: </label> <froala :content="caption" placeholder="add a caption text" editor-type="headerFooter"></froala>
+        <label>CREDIT TEXT: </label> <froala :content="credit"  placeholder="add a credit text"  editor-type="headerFooter"></froala>
     </section>
 </template>
 
 <script>
+import Froala from './Froala'
+
 export default {
     name: 'widgetfooter',
     data () {
@@ -19,7 +15,10 @@ export default {
             caption: '',
             credit: ''
         }
-    }
+    },
+    components:{
+        Froala
+    },
 }
 </script>
 

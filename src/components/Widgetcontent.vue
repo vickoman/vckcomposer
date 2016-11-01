@@ -1,9 +1,10 @@
 <template>
     <section class="widgetcontent">
-        <froala @blur="froalaBlur" @focus="froalaFocus" @changed="changed" :content="content"></froala>
-        <froala @blur="froalaBlur" @focus="froalaFocus" @changed="froalaBlur" :content="content"></froala>
-        <!-- <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p> -->
         <label>WIDGET CONTENT: </label>
+        <froala :content="content" placeholder="Enter content" editor-type="widget"></froala>
+        <froala @blur="froalaBlur" placeholder="Enter content" @focus="froalaFocus" @changed="froalaBlur" content=""></froala>
+        <!-- <p v-if="content" v-froala="{type:'widget', uploadPath: 'pepe', model: content, placeholder: 'Enter text Here!'}">Widget Content: {{ content }}</p> -->
+        
     </section>
 </template>
 
@@ -17,7 +18,7 @@ export default {
     name: 'widgetcontent',
     data () {
         return {
-            content: '<h4>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4> <h5>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h5> <hr> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vehicula nibh vehicula interdum fermentum. </p><img class="fr-dib fr-draggable" src="http://www.thetradiewebsite.com/wp-content/uploads/2013/10/img-6.jpg"> <p> Curabitur sagittis in lorem ac molestie. Suspendisse quis tempor risus. Sed cursus semper odio, et efficitur dui lacinia vel. Aenean pulvinar, tellus eget efficitur tincidunt, elit lorem elementum purus, id blandit enim orci iaculis turpis. Maecenas in libero quis arcu faucibus hendrerit. Maecenas viverra, ex vitae aliquet elementum, tellus est porttitor massa, in pulvinar augue massa sit amet nunc. Donec suscipit fringilla aliquam. Maecenas malesuada iaculis odio, non luctus magna dignissim eu. Nunc non accumsan urna. Vestibulum eu metus molestie, tincidunt est eget, tincidunt lorem. Donec eu augue porta, finibus magna quis, porttitor arcu. Etiam efficitur ligula justo, vitae molestie tellus feugiat non. In commodo dui ac lacus tempus, in porttitor tortor suscipit. Suspendisse aliquet velit nec imperdiet scelerisque. Aliquam viverra quis dolor id mollis. </p>',
+            content: '<h4>Testing</h4>',//'<h4>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4> <h5>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h5> <hr> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vehicula nibh vehicula interdum fermentum. </p><img class="fr-dib fr-draggable" src="http://www.thetradiewebsite.com/wp-content/uploads/2013/10/img-6.jpg"> <p> Curabitur sagittis in lorem ac molestie. Suspendisse quis tempor risus. Sed cursus semper odio, et efficitur dui lacinia vel. Aenean pulvinar, tellus eget efficitur tincidunt, elit lorem elementum purus, id blandit enim orci iaculis turpis. Maecenas in libero quis arcu faucibus hendrerit. Maecenas viverra, ex vitae aliquet elementum, tellus est porttitor massa, in pulvinar augue massa sit amet nunc. Donec suscipit fringilla aliquam. Maecenas malesuada iaculis odio, non luctus magna dignissim eu. Nunc non accumsan urna. Vestibulum eu metus molestie, tincidunt est eget, tincidunt lorem. Donec eu augue porta, finibus magna quis, porttitor arcu. Etiam efficitur ligula justo, vitae molestie tellus feugiat non. In commodo dui ac lacus tempus, in porttitor tortor suscipit. Suspendisse aliquet velit nec imperdiet scelerisque. Aliquam viverra quis dolor id mollis. </p>',
             activeFroala: null,
         }
     },
