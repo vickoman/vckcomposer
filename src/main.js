@@ -3,6 +3,7 @@ import Widget from './Widget'
 import App from './App'
 import router from './router'
 import Panelsettings from './Panelsettings'
+import WidgetToolbar from './WidgetToolbar'
 
 /* eslint-disable no-new */
 new Vue({
@@ -21,6 +22,12 @@ new Vue({
   el: '#panel-settings',
   template: '<Panelsettings/>',
   components: { Panelsettings }
+});
+
+new Vue({
+  el: '#widget-toolbar',
+  template: '<widgetToolbar/>',
+  components: { WidgetToolbar }
 });
 
 export {router}

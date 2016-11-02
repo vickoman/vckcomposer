@@ -18,6 +18,15 @@ export default {
     Widgetheader,
     Widgetfooter,
     Widgetcontent
+  },
+  created: function () {
+    console.log('mounted')
+    this.$on('froalachanged', function (editor, group) {
+      console.log('froalachanged', editor, group)
+    })
+    this.$on('changed', function (editor, group) {
+      console.log('froalachanged', editor, group)
+    })
   }
 }
 </script>

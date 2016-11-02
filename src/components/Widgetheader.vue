@@ -1,16 +1,12 @@
 <template>
     <section class="widgetheader">
-        
-        <h1 v-if="title">Your title is: {{ title }}</h1>
-        <label>TITLE TEXT: </label><input v-model="title" placeholder="add a title">
-        <br/>
-        <h2 v-if="leadin">Your leadin is: {{ leadin }}</h2>
-        <label>LEADIN TEXT: </label><input v-model="leadin" placeholder="add a leadin text">
-        
+      <label>TITLE TEXT: </label> <froala    group="widget" :content="title" placeholder="add a title text" editor-type="headerFooter"></froala>
+        <label>LEADIN TEXT: </label> <froala group="widget" :content="leadin"  placeholder="add a leadin text"  editor-type="headerFooter"></froala>
     </section>
 </template>
 
 <script>
+import Froala from './Froala'
 export default {
     name: 'widgetheader',
     data () {
@@ -18,7 +14,10 @@ export default {
             title: '',
             leadin: ''
         }
-    }
+    },
+    components:{
+        Froala
+    },
 }
 </script>
 

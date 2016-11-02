@@ -1,4 +1,4 @@
-<style scoped>
+<style>
     section .fr-toolbar .fr-command.fr-btn{
       /* knowbly color gray-42 */
       color: #424242 !important;
@@ -35,14 +35,27 @@ import "froala-editor/js/plugins/align.min.js"
 import "froala-editor/js/plugins/link.min.js"
 import "froala-editor/js/plugins/lists.min.js"
 
+const opts = {
+    widget: {
+        toolbarButtons:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtonsSM:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink']
+    },
+    default: {
+        toolbarButtonsSM:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink'],
+        toolbarButtons:   ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'align','-', 'formatUL', 'formatOL', 'indent', 'outdent', 'insertImage', 'insertLink']
+    },
+    headerFooter: {
+        toolbarButtons:   ['bold', 'italic', 'underline', 'strikeThrough', 'color',],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'color',],
+        toolbarButtonsSM: ['bold', 'italic', 'underline', 'strikeThrough', 'color',],
+    }
+}
+
 export default {
   name: 'Froala-Editor',
-  props:['content'],
-  // data () {
-  //   return {
-  //   }
-  // },
-  // props: ['size', 'myMessage'],
+  props:['content', 'placeholder', 'editorType', 'group'],
   methods: {
     clicked: function(){
       console.log('clicked', this)
@@ -50,13 +63,9 @@ export default {
   },
   mounted: function(){
     $.FroalaEditor.DEFAULTS.key= "VZSZGUSXYSMZe1JGZ==";
-    console.log('args', arguments, this.$el)
+    // console.log('args', arguments, this.$el)
     let $el = $(this.$el);
     let self = this;
-    /*$el.on('froalaEditor.initialized',  (e, editor) => this.vm.$editor = editor );
-    $el.on('froalaEditor.focus',        (e, editor) => editor.$box.addClass('focus') );
-    $el.on('froalaEditor.blur',         (e, editor) => editor.$box.removeClass('focus') );
-    $el.on('froalaEditor.image.error',  (e, editor, error) => alert(error.message) );*/
 
     let defaults = {
         toolbarInline: true,
@@ -65,32 +74,17 @@ export default {
         initOnClick: true,
         typingTimer: 999,
     }
-    // let options = {};
 
-    // if (binding.value.model){
-    //     $el.html(binding.value.model)
-    // }
-
-    // let editorType = binding.value.type || 'default'
+    let editorType = this.editorType || 'default'
     
-    // $.extend(options, defaults, opts[editorType],{
-    //     placeholderText: binding.value.placeholder || ''
-    //     // fileUploadURL: binding.value.uploadPath || '',
-    //     // imageUploadURL: binding.value.uploadPath || ''
-    // })
-
-    // console.log('binding', binding)
-    // console.log('options', options)
-
+    $.extend(defaults, opts[editorType],{
+        placeholderText: this.placeholder || '',
+    })
 
     // console.log(vnode.tag);
     // console.log('el',$el, $el.html());
     setTimeout(() => { 
         $el.froalaEditor(defaults) 
-            //  $('body').on('blur', $('#froala'), function(el, el2){
-            //  console.log('blur', el, this)
-          //  // binding.value.model = $el.html()
-        // })
     }, 200);
 
     $el.on('froalaEditor.blur', 
@@ -99,11 +93,25 @@ export default {
             // this.content = $el.html()
             this.$emit('blur', event, ui, $el.html())
     })
+    this.group = this.group || 'global'
 
     $el.on('froalaEditor.contentChanged', function (e, editor) {
       // Do something here.
-      console.log('contentchanged')
-      self.$emit('changed', e, editor, $el.html())
+      console.log('contentchanged',editor, self.group)
+      // self.$emit('froalachanged', editor, this.group)
+
+      if (!window.undoPressed && !window.redoPressed) {
+          editorUndoOrder[self.group].splice(editorUndoCurrentPosition + 1, editorUndoOrder[self.group].length)
+          window.editorUndoOrder[self.group].push(editor)
+          window.editorUndoCurrentPosition = window.editorUndoOrder[self.group].length - 1
+          console.log('contentchanged', editorUndoOrder[self.group].map(value => value['id']), window.editorUndoCurrentPosition)
+          self.$emit('froalachanged', editor, this.group)
+      }else
+      {
+          window.undoPressed = false
+          window.redoPressed = false
+      }
+      // self.$emit('changed', e, editor, $el.html())
 
     });
 
@@ -118,5 +126,4 @@ export default {
 // module.exports = froala
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 
