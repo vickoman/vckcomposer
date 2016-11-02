@@ -18,10 +18,10 @@
     <div class="mask-cmd-tools">
     <div class="cmd-tools">
     <ul>
-    <li v-on:click="undo">
+    <li v-on:click.stop.prevent="undo">
     <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#undo" ></use></svg>
     </li>
-    <li v-on:click="redo">
+    <li v-on:click.stop.prevent="redo">
     <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redo" ></use></svg>
     </li>
     <li class="spacer">

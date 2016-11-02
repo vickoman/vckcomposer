@@ -1,4 +1,4 @@
-<style scoped>
+<style>
     section .fr-toolbar .fr-command.fr-btn{
       /* knowbly color gray-42 */
       color: #424242 !important;

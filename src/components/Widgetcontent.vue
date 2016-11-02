@@ -32,7 +32,7 @@ export default {
             // this.$emit('froalachanged', editor, group)
         },
     },
-    // mounted: function () {
+    // created: function () {
     //     this.$on('froalachanged', function (editor, group) {
     //     console.log('froalachanged', editor, group)
     //     })
