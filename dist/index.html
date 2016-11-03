@@ -1,0 +1,214 @@
+<!DOCTYPE html><html class=""><head><title>Widget Composer</title><meta charset=UTF-8><meta name=viewport content="width=device-width"><script type=text/javascript>var ajax = new XMLHttpRequest();
+        ajax.open("GET", "/static/images/md-icon-library/svg-symbols.svg", true);
+        ajax.send();
+        ajax.onload = function(e) {
+        var div = document.createElement("div");
+        div.className = "visually-hidden";
+        div.innerHTML = ajax.responseText;
+        document.body.insertBefore(div, document.body.childNodes[0]);
+        }</script><link rel=stylesheet href=/static/css/main.css media=all><link rel=stylesheet href=/static/css/style.css?1477072478821 media=all><link rel=stylesheet href=/static/css/pattern-scaffolding.css?1477072478821 media=all><link href=/static/css/app.c81a4c49e7eba4ffb8a34b0bf6027386.css rel=stylesheet></head><body class=""><div class=widget-editor><header class=header><div class=header__title>Widget Editor</div><svg><use xlink:href=#close-x></use></svg></header><div class=workspace><div class=canvas><script src=https://code.jquery.com/jquery-3.1.1.js integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin=anonymous></script><script type=text/javascript src=/static/js/froala/froala_editor.min.js></script><script type=text/javascript src=/static/js/froala/plugins/colors.min.js></script><script type=text/javascript src=/static/js/froala/plugins/image.min.js></script><script type=text/javascript src=/static/js/froala/plugins/image_manager.min.js></script><script type=text/javascript src=/static/js/froala/plugins/align.min.js></script><script type=text/javascript src=/static/js/froala/plugins/lists.min.js></script><script type=text/javascript src=/static/js/froala/plugins/link.min.js></script><div class=toolbar-widget id=widget-toolbar><ul><li class=widget-title><label class=widget-title__label for="">HOTSPOT WIDGET:</label><div class=input-text><label class=u-hidden for=txt-input></label><input type=text name="" class=txt-input placeholder=Untitled value=""></div></li><li><div class=cmd-menu-container><div class=cmd-menu><svg><use xlink:href=#knife></use></svg></div><div class=mask-cmd-tools><div class=cmd-tools><ul><li><svg><use xlink:href=#undo></use></svg></li><li><svg><use xlink:href=#redo></use></svg></li><li class=spacer><svg><use xlink:href=#vert-line></use></svg></li><li><svg><use xlink:href=#cut></use></svg></li><li><svg><use xlink:href=#copy></use></svg></li><li><svg><use xlink:href=#paste></use></svg></li></ul></div></div></div></li><li class=button-preview><button class=button-standard-gray>Preview</button></li></ul></div><div class=artboard-container><div class=media-tools><ul><li class=""><svg><use xlink:href=#settings></use></svg></li><li class=""><svg><use xlink:href=#metadata></use></svg></li></ul></div><div class=artboard><div id=widget></div></div></div></div><div class=panel><div class=panel-settings><div id=panel-settings></div></div><div class=panel-themes><div class=panel-content><div class=panel-header>Themes</div><div class=modern-container><div class="dropdown dropdown-input"><div class=dropdown-button><div class=input-text><label class=u-hidden for=txt-input>Language</label><input type=text name="" class=txt-input placeholder=Language value=""></div><div class=icon-arrow><svg><use xlink:href=#arrow-down></use></svg></div></div><ul class="dropdown-content u-hide"><li>Dropdown Item</li><li>Dropdown Item</li><li>Dropdown Item</li></ul></div></div><div class=academic-container><div class="dropdown dropdown-input"><div class=dropdown-button><div class=input-text><label class=u-hidden for=txt-input>Language</label><input type=text name="" class=txt-input placeholder=Language value=""></div><div class=icon-arrow><svg><use xlink:href=#arrow-down></use></svg></div></div><ul class="dropdown-content u-hide"><li>Dropdown Item</li><li>Dropdown Item</li><li>Dropdown Item</li></ul></div></div><div class=playful-container><div class="dropdown dropdown-input"><div class=dropdown-button><div class=input-text><label class=u-hidden for=txt-input>Language</label><input type=text name="" class=txt-input placeholder=Language value=""></div><div class=icon-arrow><svg><use xlink:href=#arrow-down></use></svg></div></div><ul class="dropdown-content u-hide"><li>Dropdown Item</li><li>Dropdown Item</li><li>Dropdown Item</li></ul></div></div></div></div><div class=panel-accessibility><div class=panel-content><div class=panel-header>Accessibility</div><div class="alt-text-readers-container accordian"><div class="accordian__btn border-top"><svg><use xlink:href=#arrow-right></use></svg><div class=accordian__title>Alt Text Screen Readers</div></div><div class="accordian__container panel-closed"><ul class=accordian__content><li class=kds-mb-32><div class=input-text><label class=u-hidden for=txt-input>Widget Short Description</label><input type=text name="" class=txt-input placeholder="Widget Short Description" value=""></div></li><li><div class=textarea-line-container><label class=u-hidden for=txtarea-line>Widget Long Description</label><textarea type=text class=textarea-line rows=1 placeholder="Widget Long Description"></textarea></div></li></ul></div></div><div class="alt-text-assets-container accordian"><div class=accordian__btn><svg><use xlink:href=#arrow-right></use></svg><div class=accordian__title>Alt Text Assets</div></div><div class="accordian__container panel-closed"><ul class=accordian__content><li class=kds-mb-40><div class=image-text-input><div class=image-lockup><div class=image-file-name>filename.jpg</div><img src=https://unsplash.it/300/200 alt=""><div class=input-text><label class=u-hidden for=txt-input>Alt Text</label><input type=text name="" class=txt-input placeholder="Alt Text" value=""></div></div></div></li><li class=kds-mb-40><div class=image-text-input><div class=image-lockup><div class=image-file-name>filename.jpg</div><img src=https://unsplash.it/300/200 alt=""><div class=input-text><label class=u-hidden for=txt-input>Alt Text</label><input type=text name="" class=txt-input placeholder="Alt Text" value=""></div></div></div></li><li class=kds-mb-32><div class=image-text-input><div class=image-lockup><div class=image-file-name>filename.jpg</div><img src=https://unsplash.it/300/200 alt=""><div class=input-text><label class=u-hidden for=txt-input>Alt Text</label><input type=text name="" class=txt-input placeholder="Alt Text" value=""></div></div></div></li></ul></div></div></div></div><script>(function(){
+var accordians = document.querySelectorAll('.accordian');
+accordians.forEach(function(acord) {
+acord.querySelector('.accordian__btn').addEventListener('click', function(e){
+_openPanel(e.currentTarget);
+toggleSvg(this.querySelector('svg'));
+acord.classList.toggle('white-bkgd');
+});
+});
+function _openPanel(target) {
+if(target.querySelector('.accordian__container').classList.contains('panel-closed')){
+console.log('target ', target.querySelector('.accordian__container'))
+target.querySelector('.accordian__container').classList.remove('panel-closed');
+} else {
+target.querySelector('.accordian__container').classList.add('panel-closed');
+}
+}
+function toggleSvg(svg) {
+svg.classList.contains('u-rotate-90') ? svg.classList.remove('u-rotate-90') : svg.classList.add('u-rotate-90')
+}
+/* Add Label to text input - Temp Hack */
+// var altText = alt_asset.querySelectorAll('.dd-content input');
+// altText.forEach(function(item){ item.placeholder = 'Alt Text' });
+var inputs = document.querySelectorAll('.panel-accessibility input');
+inputs.forEach(function(input) {
+var _placeholder;
+input.addEventListener('focusin', function(e){
+_placeholder = e.target.placeholder;
+e.target.placeholder = ' ';
+e.target.previousSibling.previousSibling.classList.remove('u-hidden')
+});
+input.addEventListener('focusout', function(e) {
+if(e.target.value || e.target.placeholder) {
+e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+}
+if (e.target.value === '') {
+e.target.previousSibling.previousSibling.classList.add('u-hidden');
+e.target.placeholder = _placeholder;
+}
+})
+});
+var textarea_input = document.querySelector('.panel-accessibility textarea');
+var _placeholder_textarea;
+textarea_input.addEventListener('focusin', function(e){
+_placeholder_textarea = e.target.placeholder;
+e.target.placeholder = ' ';
+e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+this.parentNode.style.height = (100 + '%');
+});
+textarea_input.addEventListener('focusout', function(e) {
+if(e.target.value || e.target.placeholder) {
+e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+}
+if (e.target.value === '') {
+e.target.previousSibling.previousSibling.classList.add('u-hidden');
+e.target.placeholder = _placeholder_textarea;
+}
+})
+})();</script><div class=panel-metadata><div class=panel-content><div class=panel-header>Metadata</div><div class="description-container accordian"><div class="border-top accordian__btn"><svg><use xlink:href=#arrow-right></use></svg><div class=accordian__title>Description</div></div><div class="accordian__container panel-closed"><ul class=accordian__content><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Subject</label><input type=text name="" class=txt-input placeholder=Subject value=""></div></li><li class=kds-mb-16><div class=textarea-line-container><label class=u-hidden for=txtarea-line>Description</label><textarea type=text class=textarea-line rows=1 placeholder=Description></textarea></div></li><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Publisher</label><input type=text name="" class=txt-input placeholder=Publisher value=""></div></li><li><div class=input-text><label class=u-hidden for=txt-input>Contributor</label><input type=text name="" class=txt-input placeholder=Contributor value=""></div></li></ul></div></div><div class="rights-sources-container accordian"><div class="btn-container accordian__btn"><svg><use xlink:href=#arrow-right></use></svg><div class=accordian__title>Rights & Sources</div></div><div class="accordian__container panel-closed"><ul class=accordian__content><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Identifier</label><input type=text name="" class=txt-input placeholder=Identifier value=""></div></li><li class=kds-mb-16><div class=textarea-line-container><label class=u-hidden for=txtarea-line>Source</label><textarea type=text class=textarea-line rows=1 placeholder=Source></textarea></div></li><li class=kds-mb-16><div class="dropdown dropdown-input"><div class=dropdown-button><div class=input-text><label class=u-hidden for=txt-input>Language</label><input type=text name="" class=txt-input placeholder=Language value=""></div><div class=icon-arrow><svg><use xlink:href=#arrow-down></use></svg></div></div><ul class="dropdown-content u-hide"><li>Dropdown Item</li><li>Dropdown Item</li><li>Dropdown Item</li></ul></div></li><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Coverage</label><input type=text name="" class=txt-input placeholder=Coverage value=""></div></li><li><div class=input-text><label class=u-hidden for=txt-input>Rights</label><input type=text name="" class=txt-input placeholder=Rights value=""></div></li></ul></div></div><div class="interactive-profile-container accordian"><div class="btn-container accordian__btn"><svg><use xlink:href=#arrow-right></use></svg><div class=accordian__title>Interactive Profile</div></div><div class="accordian__container panel-closed"><ul class=accordian__content><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Genre</label><input type=text name="" class=txt-input placeholder=Genre value=""></div></li><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Alignment</label><input type=text name="" class=txt-input placeholder=Alignment value=""></div></li><li class=mb-24><div class=input-text><label class=u-hidden for=txt-input>End User</label><input type=text name="" class=txt-input placeholder="End User" value=""></div></li><li class=mb-24><div class=input-time-range><label for="">Time Required</label><ul class=time-inputs><li><div class=input-number><label for="">minutes:</label><input type=number min=-9999 max=9999 maxlength=4 value=249></div><script>/* Limit character count to 4 */
+                            document.querySelector('.input-number').querySelector('input').oninput = function () {
+                            if (this.value.length > 4) {
+                            return this.value = this.value.slice(0,4);
+                            }
+                            }</script></li><li><div class=input-number><label for="">seconds:</label><input type=number min=-9999 max=9999 maxlength=4 value=249></div><script>/* Limit character count to 4 */
+                            document.querySelector('.input-number').querySelector('input').oninput = function () {
+                            if (this.value.length > 4) {
+                            return this.value = this.value.slice(0,4);
+                            }
+                            }</script></li></ul></div></li><li class=kds-mb-16><div class=input-age-range><label for="">Age Range</label><ul class=age-inputs><li><div class=input-number><label for="">From:</label><input type=number min=-9999 max=9999 maxlength=4 value=249></div><script>/* Limit character count to 4 */
+                            document.querySelector('.input-number').querySelector('input').oninput = function () {
+                            if (this.value.length > 4) {
+                            return this.value = this.value.slice(0,4);
+                            }
+                            }</script></li><li><div class=input-number><label for="">To:</label><input type=number min=-9999 max=9999 maxlength=4 value=249></div><script>/* Limit character count to 4 */
+                            document.querySelector('.input-number').querySelector('input').oninput = function () {
+                            if (this.value.length > 4) {
+                            return this.value = this.value.slice(0,4);
+                            }
+                            }</script></li></ul></div></li><li class=kds-mb-16><div class=input-text><label class=u-hidden for=txt-input>Interactive Type</label><input type=text name="" class=txt-input placeholder="Interactive Type" value=""></div></li><li class=""><div class=input-text><label class=u-hidden for=txt-input>Learning Resource Type</label><input type=text name="" class=txt-input placeholder="Learning Resource Type" value=""></div></li></ul></div></div></div></div><script>(function() {
+var accordians = document.querySelectorAll('.accordian');
+accordians.forEach(function(acord) {
+acord.querySelector('.accordian__btn').addEventListener('click', function(e){
+openPanel(acord);
+toggleSvg(this.querySelector('svg'));
+acord.classList.toggle('white-bkgd');
+});
+});
+function openPanel(target) {
+if(target.querySelector('.accordian__container').classList.contains('panel-closed')){
+target.querySelector('.accordian__container').classList.remove('panel-closed');
+} else {
+target.querySelector('.accordian__container').classList.add('panel-closed');
+}
+}
+function toggleSvg(svg) {
+svg.classList.contains('u-rotate-90') ? svg.classList.remove('u-rotate-90') : svg.classList.add('u-rotate-90')
+}
+// var dropdown_arrow = rights_sources.querySelector('.dropdown-input .icon-arrow');
+// dropdown_arrow.addEventListener('click', function(e) {
+//     e.stopPropagation();
+//     var parent = dropdown_arrow.parentNode.parentNode.parentNode.querySelector('.dropdown-input');
+//     var target = parent.querySelector('.dropdown-content');
+//     target.classList.toggle('u-hide');
+//     var mask = rights_sources.querySelector('.dd-container');
+//     mask.classList.toggle('remove-mask');
+//     var label = parent.querySelector('label');
+//     label.classList.toggle('u-hidden');
+// });
+// var dropdown_input = rights_sources.querySelector('.dropdown-input input');
+// dropdown_input.addEventListener('focusin', function(e){
+//     _placeholder = e.target.placeholder;
+//     e.target.placeholder = ' ';
+//     e.target.previousSibling.previousSibling.classList.remove('u-hidden')
+// });
+// dropdown_input.addEventListener('focusout', function(e) {
+//     if(e.target.value || e.target.placeholder) {
+//         e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+//     }
+//     if (e.target.value === '') {
+//         e.target.previousSibling.previousSibling.classList.add('u-hidden');
+//         e.target.placeholder = _placeholder;
+//     }
+// });
+var inputs = document.querySelectorAll('.panel-metadata .txt-input');
+inputs.forEach(function(input) {
+var _placeholder;
+input.addEventListener('focusin', function(e){
+_placeholder = e.target.placeholder;
+e.target.placeholder = ' ';
+e.target.previousSibling.previousSibling.classList.remove('u-hidden')
+});
+input.addEventListener('focusout', function(e) {
+if(e.target.value || e.target.placeholder) {
+e.target.previousSibling.previousSibling.classList.remove('u-hidden');
+}
+if (e.target.value === '') {
+e.target.previousSibling.previousSibling.classList.add('u-hidden');
+e.target.placeholder = _placeholder;
+}
+})
+});
+var parent = document.querySelector('.panel-metadata');
+var textarea_input = parent.querySelectorAll('textarea');
+var _placeholder_textarea;
+textarea_input.forEach(function(ta){
+ta.addEventListener('focusin', function(e){
+_placeholder_textarea = e.target.placeholder;
+e.target.placeholder = ' ';
+var textarea_label = this.parentNode.querySelector('label');
+textarea_label.classList.remove('u-hidden');
+this.parentNode.style.height = (100 + '%');
+});
+ta.addEventListener('focusout', function(e) {
+var textarea_label = this.parentNode.querySelector('label');
+textarea_label.classList.remove('u-hidden');
+if(e.target.value) {
+textarea_label.classList.remove('u-hidden');
+}
+else if (e.target.value === '') {
+textarea_label.classList.add('u-hidden');
+e.target.placeholder = "Source";
+}
+})
+});
+})();</script></div><div class=sidebar><ul><li class=btn-settings><svg><use xlink:href=#settings></use></svg><div class="indicator indicator--right u-hide"></div></li><li class=btn-metadata><svg><use xlink:href=#metadata></use></svg><div class="indicator indicator--right u-hide"></div></li><li class=btn-accessibility><svg><use xlink:href=#accessibility></use></svg><div class="indicator indicator--right u-hide"></div></li><li class=btn-comments><svg><use xlink:href=#comments></use></svg><div class="indicator indicator--right u-hide"></div></li></ul><ul><li class=btn-user-guide><svg><use xlink:href=#help-info></use></svg><div class="indicator indicator--right u-hide"></div></li></ul></div></div><footer class=footer>Footer - FPO</footer></div><script src=/static/js/widget-editor.js></script><script type=text/json id=sg-pattern-data-footer class=sg-pattern-data>{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"templates-header","lineagePath":"../../patterns/05-templates-header/05-templates-header.rendered.html"},{"lineagePattern":"modules-toolbar","lineagePath":"../../patterns/04-modules-toolbar/04-modules-toolbar.rendered.html"},{"lineagePattern":"modules-media-tools","lineagePath":"../../patterns/04-modules-media-tools/04-modules-media-tools.rendered.html"},{"lineagePattern":"modules-gallery","lineagePath":"../../patterns/04-modules-gallery/04-modules-gallery.rendered.html"},{"lineagePattern":"modules-panel-settings","lineagePath":"../../patterns/04-modules-panel-settings/04-modules-panel-settings.rendered.html"},{"lineagePattern":"modules-panel-themes","lineagePath":"../../patterns/04-modules-panel-themes/04-modules-panel-themes.rendered.html"},{"lineagePattern":"modules-panel-accessibility","lineagePath":"../../patterns/04-modules-panel-accessibility/04-modules-panel-accessibility.rendered.html"},{"lineagePattern":"modules-panel-metadata","lineagePath":"../../patterns/04-modules-panel-metadata/04-modules-panel-metadata.rendered.html"},{"lineagePattern":"templates-sidebar","lineagePath":"../../patterns/05-templates-sidebar/05-templates-sidebar.rendered.html"},{"lineagePattern":"templates-footer","lineagePath":"../../patterns/05-templates-footer/05-templates-footer.rendered.html"}],"lineage":[{"lineagePattern":"templates-header","lineagePath":"../../patterns/05-templates-header/05-templates-header.rendered.html"},{"lineagePattern":"modules-toolbar","lineagePath":"../../patterns/04-modules-toolbar/04-modules-toolbar.rendered.html"},{"lineagePattern":"modules-media-tools","lineagePath":"../../patterns/04-modules-media-tools/04-modules-media-tools.rendered.html"},{"lineagePattern":"modules-gallery","lineagePath":"../../patterns/04-modules-gallery/04-modules-gallery.rendered.html"},{"lineagePattern":"modules-panel-settings","lineagePath":"../../patterns/04-modules-panel-settings/04-modules-panel-settings.rendered.html"},{"lineagePattern":"modules-panel-themes","lineagePath":"../../patterns/04-modules-panel-themes/04-modules-panel-themes.rendered.html"},{"lineagePattern":"modules-panel-accessibility","lineagePath":"../../patterns/04-modules-panel-accessibility/04-modules-panel-accessibility.rendered.html"},{"lineagePattern":"modules-panel-metadata","lineagePath":"../../patterns/04-modules-panel-metadata/04-modules-panel-metadata.rendered.html"},{"lineagePattern":"templates-sidebar","lineagePath":"../../patterns/05-templates-sidebar/05-templates-sidebar.rendered.html"},{"lineagePattern":"templates-footer","lineagePath":"../../patterns/05-templates-footer/05-templates-footer.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"pages"},"patternExtension":"mustache","patternName":"Widget Editor","patternPartial":"pages-widget-editor","patternState":"","patternEngineName":"mustache","extraOutput":{}}</script><script>/*!
+* scriptLoader - v0.1
+*
+* Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+* Licensed under the MIT license
+*
+*/
+var scriptLoader = {
+run: function(js,cb,target) {
+var s  = document.getElementById(target+'-'+cb);
+for (var i = 0; i < js.length; i++) {
+var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+var c   = document.createElement('script');
+c.src   = '../../'+src+'?'+cb;
+if (typeof js[i] != 'string') {
+if (js[i].dep !== undefined) {
+c.onload = function(dep,cb,target) {
+return function() {
+scriptLoader.run(dep,cb,target);
+}
+}(js[i].dep,cb,target);
+}
+}
+s.parentNode.insertBefore(c,s);
+}
+}
+}</script><script id=pl-js-polyfill-insert-1477497675966>(function() {
+if (self != top) {
+var cb = '1477497675966';
+var js = [];
+if (typeof document !== 'undefined' && !('classList' in document.documentElement)) {
+js.push('styleguide/bower_components/classList.min.js');
+}
+scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+}
+})();</script><script id=pl-js-insert-1477497675966>(function() {
+if (self != top) {
+var cb = '1477497675966';
+var js = [ { 'src': 'styleguide/bower_components/jwerty.min.js', 'dep': [ 'styleguide/js/patternlab-pattern.min.js' ] } ];
+scriptLoader.run(js,cb,'pl-js-insert');
+}
+})();</script><script type=text/javascript src=/static/js/manifest.b6c3252bfd7824799373.js></script><script type=text/javascript src=/static/js/vendor.fbeb3982253d68e10fe2.js></script><script type=text/javascript src=/static/js/app.a49f455cbf49defea5a6.js></script></body></html>
