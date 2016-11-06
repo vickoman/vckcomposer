@@ -3,7 +3,7 @@
         <div class="panel-header">{{ panelTitle }}</div>
         <ul>
             <li class="kds-mb-24">
-                <button class="button-standard-gray">Batch Upload</button>
+                <button class="button-standard-gray">Batch Upload VCK</button>
             </li>
             <li class="kds-mb-32">
                 <div class="checkbox">
