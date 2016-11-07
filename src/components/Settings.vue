@@ -1,6 +1,6 @@
 <template>
     <div class="panel-content">
-        <div class="panel-header">{{ panelTitle }}</div>
+        <div class="panel-header">{{ panelTitle }} JAJAJAJA</div>
         <ul>
             <li class="kds-mb-24">
                 <button class="button-standard-gray">Batch Upload VCK 2</button>
